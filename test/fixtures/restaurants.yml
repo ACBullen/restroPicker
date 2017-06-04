@@ -1,18 +1,19 @@
 # == Schema Information
 #
-# Table name: users
+# Table name: restaurants
 #
-#  id            :integer          not null, primary key
-#  username      :string           not null
-#  group_id      :integer
-#  filter_ready  :boolean          default("false"), not null
-#  ranking_ready :boolean          default("false"), not null
-#  created_at    :datetime         not null
-#  updated_at    :datetime         not null
+#  id         :integer          not null, primary key
+#  group_id   :integer          not null
+#  name       :string           not null
+#  rating     :float
+#  yelp_url   :string           not null
+#  address    :string           not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
 #
 # Indexes
 #
-#  index_users_on_username  (username)
+#  index_restaurants_on_group_id  (group_id)
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

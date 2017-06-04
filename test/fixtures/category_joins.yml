@@ -1,18 +1,16 @@
 # == Schema Information
 #
-# Table name: users
+# Table name: category_joins
 #
-#  id            :integer          not null, primary key
-#  username      :string           not null
-#  group_id      :integer
-#  filter_ready  :boolean          default("false"), not null
-#  ranking_ready :boolean          default("false"), not null
-#  created_at    :datetime         not null
-#  updated_at    :datetime         not null
+#  id          :integer          not null, primary key
+#  user_id     :integer          not null
+#  category_id :integer          not null
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
 #
 # Indexes
 #
-#  index_users_on_username  (username)
+#  index_category_joins_on_user_id  (user_id)
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

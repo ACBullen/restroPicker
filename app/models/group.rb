@@ -25,16 +25,7 @@ class Group < ApplicationRecord
     p self
   end
 
-  def self.create_group
-    @user = User.new(params[:username])
-
-    if @user.save
-      @group = @user.create_group
-      render :show
-    else
-      render json: "something went wrong", status: 422
-    end
-  end
+  
 
   def generate_group_code
     self.group_code ||= SecureRandom.urlsafe_base64(6)
