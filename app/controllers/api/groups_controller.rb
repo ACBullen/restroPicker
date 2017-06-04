@@ -1,5 +1,6 @@
 class Api::GroupsController < ApplicationController
   def show
-    render :group
+    @group = Group.find(params[:id])
+    render :show
   end
 end

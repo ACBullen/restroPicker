@@ -16,6 +16,24 @@ class User < ApplicationRecord
 
   #after committing broadcast to related room user information:
   #after_commit { UserUpdateJob.perform_later(self, self.group_id) }
+  after_commit :test_info
+
+  def test_info
+    p self
+  end
+
+  def create_group
+    @group = Group.new
+    @group.creator = self
+    self.group = @group
+    if @group.save && self.save
+      @group
+    else
+      p @group.errors.full_messages
+      p self.errors.full_messages
+      nil
+    end
+  end
 
   has_one :owned_group,
     primary_key: :id,
