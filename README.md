@@ -48,6 +48,7 @@ In order to ensure the smooth operation of the group experience, the app will us
  - Studied GraphQL and Websockets
  - Researched Yelp API and how to retrieve the data we need at different phases of the UX
  - Completed DB schema
+ - DB set up according to schema and models have started to be filled out
 
 
 ## Group Members
