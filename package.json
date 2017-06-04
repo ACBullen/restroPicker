@@ -1,0 +1,36 @@
+{
+  "name": "restro_picker",
+  "version": "1.0.0",
+  "description": "A webapp to help groups of the indecisive make restraunt choices with the maximum happiness possible ",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "test": "test"
+  },
+  "dependencies": {
+    "ramda": "^0.24.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ACBullen/restroPicker.git"
+  },
+  "keywords": [
+    "restaurants",
+    "weighted",
+    "choice",
+    "sorting",
+    "yelp",
+    "fusion",
+    "API"
+  ],
+  "author": "Alex Bullen, Alex Scott, Alissara Rojanapairat",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ACBullen/restroPicker/issues"
+  },
+  "homepage": "https://github.com/ACBullen/restroPicker#readme"
+}
