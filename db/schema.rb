@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20170604175156) do
 
   create_table "users", force: :cascade do |t|
     t.string   "username",                     null: false
-    t.integer  "group_id",                     null: false
+    t.integer  "group_id"
     t.boolean  "filter_ready", default: false, null: false
     t.boolean  "choice_ready", default: false, null: false
     t.datetime "created_at",                   null: false

@@ -15,7 +15,9 @@ class Group < ApplicationRecord
   validates :group_code, :creator_id, presence: true
   after_initialize :generate_group_code
 
-  #after_commit, broadcast to related room
+  #after committing, broadcast to related room:
+  #after_commit {GroupUpdateJob.perform_later(self)}
+
 
   def generate_group_code
     self.group_code ||= SecureRandom.urlsafe_base64(6)
