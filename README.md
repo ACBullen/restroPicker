@@ -10,38 +10,39 @@ Our approach:
 
   * Query the Yelp API to find types of restaurants in the area near the group
   * Allow one member of the group to create a 'room' to which other members can subscribe
-  * Offer each group member a list of cuisines and price ranges based on the results of our API search
-  * Offer a list of restaurants for group members to rank based on cuisine/price results
+  * Offer a list of restaurants (based on location of group creator) for group members to rank
   * Apply a ranking algorithm to determine the best choice for the group
 
 ## Functionality and MVP
 
-  - [] Get potential restaurants from Yelp based on location (using GraphQL)
-  - [] Create a 'room' to which users can subscribe (using Websockets)
-  - [] Take in a user choices and dynamically update the group (Websockets)
-  - [] Return top 3 restaurants based on algorithm results
-  - [] Delete group and dependancies after a set period of time
-  - [] Be adequately styled
+  - [ ] Get potential restaurants from Yelp based on location (using GraphQL)
+  - [ ] Create a 'room' to which users can subscribe (using Websockets)
+  - [ ] Take in a user choices and dynamically update the group (Websockets)
+  - [ ] Return top 3 restaurants based on algorithm results
+  - [ ] Delete group and dependancies after a set period of time
+  - [ ] Be available as a mobile app, but feature a web demo page featuring emulator
+  - [ ] Be adequately styled
 
 #### Bonus Features
 
- - [] Allow users to input a search location as opposed to using the actual location of the group creator
- - [] A live chat feature via which users can communicate while waiting for results
- - [] Display a Google Map on the results/rankings pages
- - [] Display directions to first restaurant on the results page
+ - [ ] Allow users to input a search location as opposed to using the actual location of the group creator
+ - [ ] Allow creator to send group code via SMS invite to other group members
+ - [ ] Display a Google Map on the results/rankings pages
+ - [ ] Display directions to first restaurant on the results page
+
 
 ## Technologies
 
-##### Backend: Ruby/Rails/ActionCable/Yelp GraphQL
-##### Frontend: React/Redux
+##### Backend: Ruby/Rails/ActionCable(?)/Yelp GraphQL
+##### Frontend: React Native/Redux
 
 #### Establishing the appropriate connection with Websockets
 
-In order to ensure the smooth operation of the group experience, the app will use ActiveCable to connect the users via websockets. At each stage of the choosing process, data from the users will be collected and their status dynamically updated via their connection to the server, keeping each of their stores in alignment and ensuring that all will get access to the right forms at the right time and the same end result once all of the choices have been made and the sorting algorithm has been run.
+In order to ensure the smooth operation of the group experience, the app will use (possibly) ActiveCable to connect the users via websockets. At each stage of the choosing process, data from the users will be collected and their status dynamically updated via their connection to the server, keeping each of their stores in alignment and ensuring that all will get access to the right forms at the right time and the same end result once all of the choices have been made and the sorting algorithm has been run.
 
 #### Querying the Yelp API
 
-Querying the Yelp API will be carried out using the new GraphQL version of the Yelp API. This will allow us to search for restraurants based on the location of the group leader, while returning in the query only the data we want about each restaurant at each stage of the app.
+Querying the Yelp API will be carried out using the new GraphQL version of the Yelp API. This will allow us to search for restaurants based on the location of the group leader, while returning in the query only the data we want about each restaurant at each stage of the app.
 
 ```JavaScript
 
@@ -93,26 +94,24 @@ The app's backend will be responsible for maintaining the connection between use
 
 #### Alex Scott, Alex Bullen, Alissara Rojanapairat
 
-### Day 1
-Alex B: Finishing API controllers and set up figaro
-Alex S: Finalizing GraphQL logic to dynamically generate queries based on user input
-Alissara: Continue working on websockets and multi-chatroom
+### Day 1 to Day 2
+Alex B: DB reorganization and research mobile websockets
+Alex S: Finish Yelp API research and start React Native tutorial
+Alissara: React Native and research websockets as they relate to frontend
 
-### Day 2
-all three: continue Day 1 tasks
-
-### Day 3
-Alex S: Start base React components for forms
-Alex B: Build out reducers and actions and waiting rooms
-Alissara: Modals/Splash page and waiting rooms
+### Day 3 to Day 4
+Alex S: Start React components for splash page, username/join pop-ups and initial room
+Alex B: Build out reducers and actions and waiting rooms, plus API controllers
+Alissara: Start React components for waiting room and result page
 
 ### Day 4
-all three: continue frontend Day 3 tasks
+all three: Implementation cleanup and incorporation of backend sort algorithm
 
 ### Day 5
+All: bugfixing
 Alex S: Styling splash and logo
 Alex B: Styling on waiting rooms and results
 Alissara: Styling forms
 
 ### Weekend
-Functionality testing, yelp compliance assurance, bugfixing, additional styling, and bonus
+Functionality testing, yelp compliance assurance, bugfixing, emulator page, additional styling, and production README
