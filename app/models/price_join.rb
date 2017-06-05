@@ -15,4 +15,5 @@
 #
 
 class PriceJoin < ApplicationRecord
+  validates :user_id, :price_id, presence: true
 end
