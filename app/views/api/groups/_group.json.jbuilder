@@ -5,4 +5,10 @@ json.set! "users" do
   end
 end
 
+json.set! "restaurants" do
+  group.restaurants.each do |restaurant|
+    json.extract! restaurant
+  end
+end
+
 json.set! "creator", group.creator.id

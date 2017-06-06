@@ -25,7 +25,7 @@ class Group < ApplicationRecord
     p self
   end
 
-  
+
 
   def generate_group_code
     self.group_code ||= SecureRandom.urlsafe_base64(6)
@@ -41,4 +41,6 @@ class Group < ApplicationRecord
            foreign_key: :group_id,
            class_name: :User,
            dependent: :destroy
+           
+  has_many :restaurants
 end
