@@ -15,17 +15,19 @@ class Api::UsersController < ApplicationController
     end
   end
 
-  def update
-    @user = User.find(params[:id])
-
-    if @user.update_attributes(user_params)
-      
-    else
-    end
-  end
-
-  private
-  def user_params
-    params.require(:user).permit(:filter_ready, :choice_ready)
-  end
+# Below likely handled by websockets (commented in case I am wrong,
+# remove when confirmed unnecessary)
+#   def update
+#     @user = User.find(params[:id])
+#
+#     if @user.update_attributes(user_params)
+#
+#     else
+#     end
+#   end
+#
+#   private
+#   def user_params
+#     params.require(:user).permit(:filter_ready, :choice_ready)
+#   end
 end
