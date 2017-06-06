@@ -11,7 +11,7 @@ class Api::UsersController < ApplicationController
         render json: @user.errors.full_messages, status: 422
       end
     else
-      render json: "no such group, sorry!", status: 404
+      render json: "No such group, sorry!", status: 404
     end
   end
 
