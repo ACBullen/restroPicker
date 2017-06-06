@@ -19,12 +19,8 @@ class User < ApplicationRecord
   validates :username, presence: true
 
   #after committing broadcast to related room user information:
-  #after_commit { UserUpdateJob.perform_later(self, self.group_id) }
-  after_commit :test_info
+  after_commit { UserUpdateJob.perform_later(self, self.group_id) }
 
-  def test_info
-    p self
-  end
 
   def create_group
     @group = Group.new
@@ -45,4 +41,6 @@ class User < ApplicationRecord
     class_name: :Group
 
   belongs_to :group, optional: true
+
+  has_many :rankings, dependent: :destroy
 end

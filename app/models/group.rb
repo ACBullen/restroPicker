@@ -14,16 +14,11 @@ class Group < ApplicationRecord
   validates :phase, inclusion: { in: ["filter", "choice", "result"] },
                     presence: true
   validates :group_code, :creator_id, presence: true
-  after_initialize :generate_group_code
+  before_validation :generate_group_code
 
   #after committing, broadcast to related room:
-  #after_commit { GroupUpdateJob.perform_later(self) }
-  after_commit :test_info
-
-
-  def test_info
-    p self
-  end
+  after_commit { GroupUpdateJob.perform_later(self) }
+  after_create { GroupCleanupJob.set(wait: 1.day).perform_later(self) }
 
 
 
@@ -46,5 +41,6 @@ class Group < ApplicationRecord
            class_name: :User,
            dependent: :destroy
 
-  has_many :restaurants
+  has_many :restaurants,
+           dependent: :destroy
 end
