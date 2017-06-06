@@ -16,6 +16,6 @@ end
 
 json.set! "restaurants" do
   @group.restaurants.each do |restaurant|
-    json.partial! "restaurant", restaurant: restaurant
+    json.partial! "api/restaurants/restaurant", restaurant: restaurant
   end
 end

@@ -12,7 +12,7 @@
 
 class Group < ApplicationRecord
   validates :phase, inclusion: { in: ["filter", "choice", "result"] },
-                                 presence: true
+                    presence: true
   validates :group_code, :creator_id, presence: true
   after_initialize :generate_group_code
 
@@ -28,7 +28,11 @@ class Group < ApplicationRecord
 
 
   def generate_group_code
-    self.group_code ||= SecureRandom.urlsafe_base64(6)
+    self.group_code ||= SecureRandom.hex(3)
+    @collision_check = Group.find_by(group_code: self.group_code)
+    until(@collision_check == nil || self == @collision_check)
+      self.group_code = SecureRandom.hex(3)
+    end
   end
 
   belongs_to :creator,
@@ -41,6 +45,6 @@ class Group < ApplicationRecord
            foreign_key: :group_id,
            class_name: :User,
            dependent: :destroy
-           
+
   has_many :restaurants
 end
