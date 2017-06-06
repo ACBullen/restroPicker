@@ -15,15 +15,15 @@ class Api::GroupsController < ApplicationController
     end
   end
 
-  # def update
-  #   @group = Group.find(params[:id])
-  #
-  #   @group.update_attributes(group_attributes)
-  # end
-  #
-  # private
-  #
-  # def group_attributes
-  #   params.require(:group).permit(:phase)
-  # end
+  def update
+    @group = Group.find(params[:id])
+
+    @group.update_attributes(group_attributes)
+  end
+
+  private
+
+  def group_attributes
+    params.require(:group).permit(:phase)
+  end
 end
