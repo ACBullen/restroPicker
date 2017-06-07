@@ -8,6 +8,7 @@
 #  ranking    :integer          not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  rank       :integer
 #
 # Indexes
 #
@@ -16,4 +17,10 @@
 #
 
 class Ranking < ApplicationRecord
+  belongs_to :restaurant,
+    primary_key: :id,
+    foreign_key: :rest_id,
+    class_name: :Restaurant
+
+  belongs_to :user
 end
