@@ -5,7 +5,6 @@
 #  id            :integer          not null, primary key
 #  username      :string           not null
 #  group_id      :integer
-#  filter_ready  :boolean          default("false"), not null
 #  ranking_ready :boolean          default("false"), not null
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null

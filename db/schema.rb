@@ -10,48 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170606155229) do
+ActiveRecord::Schema.define(version: 20170607175055) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "categories", force: :cascade do |t|
-    t.string   "name",       null: false
-    t.integer  "group_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["group_id"], name: "index_categories_on_group_id", using: :btree
-  end
 
-  create_table "category_joins", force: :cascade do |t|
-    t.integer  "user_id",     null: false
-    t.integer  "category_id", null: false
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.index ["user_id"], name: "index_category_joins_on_user_id", using: :btree
-  end
 
   create_table "groups", force: :cascade do |t|
     t.string   "group_code",                    null: false
-    t.string   "phase",      default: "filter", null: false
     t.integer  "creator_id",                    null: false
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
-  end
-
-  create_table "price_joins", force: :cascade do |t|
-    t.integer  "user_id",    null: false
-    t.integer  "price_id",   null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["price_id"], name: "index_price_joins_on_price_id", using: :btree
-    t.index ["user_id"], name: "index_price_joins_on_user_id", using: :btree
-  end
-
-  create_table "prices", force: :cascade do |t|
-    t.string   "type",       null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.boolean  "results_ready", default: false
   end
 
   create_table "rankings", force: :cascade do |t|
@@ -79,7 +50,6 @@ ActiveRecord::Schema.define(version: 20170606155229) do
   create_table "users", force: :cascade do |t|
     t.string   "username",                      null: false
     t.integer  "group_id"
-    t.boolean  "filter_ready",  default: false, null: false
     t.boolean  "ranking_ready", default: false, null: false
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
