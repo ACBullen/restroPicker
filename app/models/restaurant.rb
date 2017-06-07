@@ -17,4 +17,10 @@
 #
 
 class Restaurant < ApplicationRecord
+  has_many :rankings,
+    primary_key: :id,
+    foreign_key: :rest_id,
+    class_name: :Ranking
+    
+  belongs_to :group
 end
