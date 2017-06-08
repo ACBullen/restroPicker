@@ -1,17 +1,16 @@
 class Api::UsersController < ApplicationController
   def create
     @user = User.new(username: params[:username])
-
     @group = Group.find_by(group_code: params[:group_code])
     if @group
+      @user.group_id = @group.id
       if @user.save
-        @user.group = @group
         render :show
       else
         render json: @user.errors.full_messages, status: 422
       end
     else
-      render json: "No such group, sorry!", status: 404
+      render json: ["No such group, sorry!"], status: 404
     end
   end
 

@@ -8,9 +8,16 @@ class Splash extends Component {
     this.state = {
       modalCreateVisible: false,
       modalJoinVisible: false,
-      name: '',
-      code: '',
+      loading: this.props.loading,
+      username: '',
+      group_code: '',
     };
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.state.loading !== nextProps.loading) {
+      return this.setState({loading: nextProps.loading});
+    }
   }
 
   setModalCreateVisible(visible) {
@@ -19,6 +26,7 @@ class Splash extends Component {
 
   setModalJoinVisible(visible) {
     this.setState({modalJoinVisible: visible});
+    this.props.clearErrors();
   }
 
   renderCreateButton() {
@@ -36,6 +44,43 @@ class Splash extends Component {
       </Button>
     );
   }
+
+  renderCreateNewGroupButton() {
+    if (this.state.loading) {
+      return <Spinner size="large" />;
+    } else {
+      return (
+        <Button onPress={() => {this.createNewGroup()}}>
+          Create
+        </Button>
+      );
+    }
+  }
+
+  createNewGroup() {
+    this.setState({ loading: true });
+    const user = this.state;
+    this.props.createGroup(user);
+  }
+
+  renderJoinAGroupButton() {
+    if (this.state.loading) {
+      return <Spinner size="large" />;
+    } else {
+      return (
+        <Button onPress={() => {this.joinAGroup()}}>
+          Join
+        </Button>
+      );
+    }
+  }
+
+  joinAGroup() {
+    this.setState({ loading: true });
+    const user = this.state;
+    this.props.joinGroup(user);
+  }
+
 
   render () {
     return (
@@ -60,15 +105,13 @@ class Splash extends Component {
                   <Input
                     placeholder="What's your name"
                     label="Name"
-                    value={this.state.name}
-                    onChangeText={text => this.setState({ name: text })}
+                    value={this.state.username}
+                    onChangeText={text => this.setState({ username: text })}
                   />
                 </CardSection>
 
                 <CardSection>
-                  <Button>
-                    Create
-                  </Button>
+                  {this.renderCreateNewGroupButton()}
                 </CardSection>
               </Card>
 
@@ -95,23 +138,25 @@ class Splash extends Component {
                 <Input
                   placeholder="What's your name?"
                   label="Name"
-                  value={this.state.name}
-                  onChangeText={text => this.setState({ name: text })}
+                  value={this.state.username}
+                  onChangeText={text => this.setState({ username: text })}
                 />
               </CardSection>
               <CardSection>
                 <Input
                   placeholder="What's your group code?"
                   label="Code"
-                  value={this.state.code}
-                  onChangeText={text => this.setState({ code: text })}
+                  value={this.state.group_code}
+                  onChangeText={text => this.setState({ group_code: text })}
                 />
               </CardSection>
 
+              <Text style={styles.errorTextStyle}>
+                {this.props.errors}
+              </Text>
+
               <CardSection>
-                <Button>
-                  Join
-                </Button>
+                {this.renderJoinAGroupButton()}
               </CardSection>
             </Card>
 
@@ -127,5 +172,13 @@ class Splash extends Component {
     );
   }
 }
+
+const styles = {
+  errorTextStyle: {
+    fontSize: 20,
+    alignSelf: 'center',
+    color: 'red'
+  }
+};
 
 export default Splash;
