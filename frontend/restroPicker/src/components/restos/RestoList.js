@@ -36,6 +36,11 @@ class RestoList extends Component {
     return (
       <View>
         <Text>RestoList!!</Text>
+        <Text>RestoList!!</Text>
+        <Text>RestoList!!</Text>
+        <Text>RestoList!!</Text>
+        <Text>RestoList!!</Text>
+        <Text>RestoList!!</Text>
       </View>
     );
   }

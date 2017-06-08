@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import {
   createGroup,
   joinGroup,
-  clearErrors } from '../actions/group_actions';
-import Splash from './Splash';
+  clearErrors } from '../../actions/group_actions';
+import NewForm from './NewForm';
 
 const mapStateToProps = (state) => {
   return ({
@@ -18,11 +18,10 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => ({
   createGroup: user => dispatch(createGroup(user)),
-  joinGroup: user => dispatch(joinGroup(user)),
   clearErrors: () => dispatch(clearErrors()),
 });
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Splash);
+)(NewForm);

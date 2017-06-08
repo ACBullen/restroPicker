@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import { Provider } from 'react-redux';
 import configureStore from './store/store';
-import SplashContainer from './components/SplashContainer';
-import RestoList from './components/restos/RestoList';
-
+import Router from './Router';
 
 class App extends Component {
 
@@ -12,8 +10,7 @@ class App extends Component {
     const store = configureStore();
     return (
       <Provider store={store}>
-        <SplashContainer />
-        <RestoList />
+        <Router />
       </Provider>
     );
   }
