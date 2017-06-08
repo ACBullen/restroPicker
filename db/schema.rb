@@ -13,7 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20170607175055) do
 
-
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -23,21 +22,6 @@ ActiveRecord::Schema.define(version: 20170607175055) do
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
     t.boolean  "results_ready", default: false
-  end
-
-  create_table "price_joins", force: :cascade do |t|
-    t.integer  "user_id",    null: false
-    t.integer  "price_id",   null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["price_id"], name: "index_price_joins_on_price_id", using: :btree
-    t.index ["user_id"], name: "index_price_joins_on_user_id", using: :btree
-  end
-
-  create_table "prices", force: :cascade do |t|
-    t.string   "type",       null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "rankings", force: :cascade do |t|
