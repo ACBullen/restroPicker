@@ -1,7 +1,6 @@
 class Api::UsersController < ApplicationController
   def create
     @user = User.new(username: params[:username])
-    p params
     @group = Group.find_by(group_code: params[:group_code])
     if @group
       @user.group_id = @group.id
