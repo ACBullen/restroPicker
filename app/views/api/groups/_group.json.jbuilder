@@ -1,4 +1,4 @@
-json.extract! group, :id, :group_code, :phase
+json.extract! group, :id, :group_code
 
 user_ary = []
 @group.users.each do |user|
