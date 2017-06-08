@@ -11,8 +11,6 @@
 #
 
 class Group < ApplicationRecord
-  validates :phase, inclusion: { in: ["filter", "choice", "result"] },
-                    presence: true
   validates :group_code, :creator_id, presence: true
   before_validation :generate_group_code
 
