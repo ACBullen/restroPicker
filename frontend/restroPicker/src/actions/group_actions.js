@@ -10,10 +10,13 @@ export const createGroup = (user) => dispatch => (
 
 export const joinGroup = (user) => dispatch => (
   APIUtil.joinGroup(user)
-    .then(
-      data => { dispatch(receiveGroup(data)); dispatch(clearErrors()); },
-      err => dispatch(receiveErrors(err.responseJSON))
-    )
+    .then( data => {
+      if (data instanceof Array) {
+        dispatch(receiveErrors(data));
+      } else {
+        dispatch(receiveGroup(data));
+      }
+    })
 );
 
 export const receiveGroup = data => ({

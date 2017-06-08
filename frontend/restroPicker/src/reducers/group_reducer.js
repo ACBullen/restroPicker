@@ -7,7 +7,7 @@ import merge from 'lodash/merge';
 const defaultGroup = Object.freeze({
   group: null,
   currentUser: null,
-  users: null,
+  users: {},
   errors: []
 });
 
@@ -19,7 +19,7 @@ const GroupReducer = (state = defaultGroup, action) => {
       return action.data;
     case RECEIVE_ERRORS:
       const errors = action.errors;
-      return merge({}, {errors});
+      return merge({}, {errors: errors});
     case CLEAR_ERRORS:
       return merge({}, {errors: []});
     default:
