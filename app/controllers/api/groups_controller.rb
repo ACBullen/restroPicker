@@ -1,6 +1,6 @@
 class Api::GroupsController < ApplicationController
   def show
-    @group = Group.find(params[:id])
+    @group = Group.find_by(group_code: params[:group_code])
     render :show
   end
 
@@ -24,6 +24,6 @@ class Api::GroupsController < ApplicationController
   private
 
   def group_attributes
-    params.require(:group).permit(:phase)
+    params.require(:group).permit(:results_ready)
   end
 end
