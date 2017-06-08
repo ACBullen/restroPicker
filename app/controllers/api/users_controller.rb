@@ -27,6 +27,6 @@ class Api::UsersController < ApplicationController
 
     private
     def user_params
-      params.require(:user).permit(:filter_ready, :choice_ready)
+      params.require(:user).permit(:ranking_ready)
     end
 end

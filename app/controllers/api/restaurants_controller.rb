@@ -6,6 +6,7 @@ class Api::RestaurantsController < ApplicationController
     @restaurants = params[:restaurants]
 
     @restaurants.each do |restaurant|
+      restaurant.group_id = params[:group_id]
       Restaurant.create(restaurant)
     end
 

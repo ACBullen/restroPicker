@@ -1,7 +1,7 @@
 class Api::ResultsController < ApplicationController
   def show
     @group = Group.find(params[:id])
-    @restaurants = @group.restaurants
+    @restaurants = @group.restaurants.includes(:rankings)
     render json: best_choice_algo(@restaurants)
   end
 
