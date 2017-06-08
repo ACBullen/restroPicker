@@ -8,9 +8,16 @@ class Splash extends Component {
     this.state = {
       modalCreateVisible: false,
       modalJoinVisible: false,
+      loading: this.props.loading,
       username: '',
       group_code: '',
     };
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.state.loading !== nextProps.loading) {
+      return this.setState({loading: nextProps.loading});
+    }
   }
 
   setModalCreateVisible(visible) {
@@ -38,19 +45,42 @@ class Splash extends Component {
     );
   }
 
+  renderCreateNewGroupButton() {
+    if (this.state.loading) {
+      return <Spinner size="large" />;
+    } else {
+      return (
+        <Button onPress={() => {this.createNewGroup()}}>
+          Create
+        </Button>
+      );
+    }
+  }
+
   createNewGroup() {
+    this.setState({ loading: true });
     const user = this.state;
     this.props.createGroup(user);
   }
 
+  renderJoinAGroupButton() {
+    if (this.state.loading) {
+      return <Spinner size="large" />;
+    } else {
+      return (
+        <Button onPress={() => {this.joinAGroup()}}>
+          Join
+        </Button>
+      );
+    }
+  }
+
   joinAGroup() {
+    this.setState({ loading: true });
     const user = this.state;
     this.props.joinGroup(user);
   }
 
-  // renderErrors() {
-  //
-  // }
 
   render () {
     return (
@@ -81,9 +111,7 @@ class Splash extends Component {
                 </CardSection>
 
                 <CardSection>
-                  <Button onPress={() => {this.createNewGroup()}}>
-                    Create
-                  </Button>
+                  {this.renderCreateNewGroupButton()}
                 </CardSection>
               </Card>
 
@@ -128,9 +156,7 @@ class Splash extends Component {
               </Text>
 
               <CardSection>
-                <Button onPress={() => {this.joinAGroup()}}>
-                  Join
-                </Button>
+                {this.renderJoinAGroupButton()}
               </CardSection>
             </Card>
 

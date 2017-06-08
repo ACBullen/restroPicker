@@ -12,6 +12,7 @@ const mapStateToProps = (state) => {
     currentUser: state.group.currentUser,
     users: state.group.users,
     errors: state.group.errors,
+    loading: state.group.loading,
   });
 };
 

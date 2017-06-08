@@ -8,7 +8,8 @@ const defaultGroup = Object.freeze({
   group: null,
   currentUser: null,
   users: {},
-  errors: []
+  errors: [],
+  loading: false,
 });
 
 const GroupReducer = (state = defaultGroup, action) => {
@@ -16,10 +17,10 @@ const GroupReducer = (state = defaultGroup, action) => {
 
   switch(action.type) {
     case RECEIVE_GROUP:
-      return action.data;
+      return merge ({}, action.data, {loading: false});
     case RECEIVE_ERRORS:
       const errors = action.errors;
-      return merge({}, {errors: errors});
+      return merge({}, {errors: errors, loading: false});
     case CLEAR_ERRORS:
       return merge({}, {errors: []});
     default:
