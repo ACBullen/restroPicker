@@ -4,6 +4,7 @@ import Splash from './components/Splash';
 import RestoList from './components/restos/RestoList';
 import NewFormContainer from './components/forms/NewFormContainer';
 import JoinFormContainer from  './components/forms/JoinFormContainer';
+import WaitRoom from './components/waitroom/WaitRoom';
 
 const RouterComponent = () => {
   return (
@@ -12,7 +13,7 @@ const RouterComponent = () => {
             key="splash"
             component={Splash}
             title="RestoPick"
-            initial/>
+            />
       <Scene
             key="newGroupForm"
             component={NewFormContainer}
@@ -29,6 +30,11 @@ const RouterComponent = () => {
             component={RestoList}
             title="Ranking Time!"
             />
+      <Scene
+            key="waitRoom"
+            component={WaitRoom}
+            title="Waiting..."
+            initial/>
     </Router>
   );
 };

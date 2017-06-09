@@ -2,6 +2,7 @@ import {
   RECEIVE_GROUP,
   RECEIVE_ERRORS,
   CLEAR_ERRORS } from '../actions/group_actions';
+import { RECEIVE_RESULT } from '../actions/result_actions';
 import merge from 'lodash/merge';
 
 const defaultGroup = Object.freeze({
@@ -10,6 +11,7 @@ const defaultGroup = Object.freeze({
   users: {},
   errors: [],
   loading: false,
+  result: null,
 });
 
 const GroupReducer = (state = defaultGroup, action) => {
@@ -21,6 +23,8 @@ const GroupReducer = (state = defaultGroup, action) => {
     case RECEIVE_ERRORS:
       const errors = action.errors;
       return merge({}, {errors: errors, loading: false});
+    case RECEIVE_RESULT:
+
     case CLEAR_ERRORS:
       return merge({}, {errors: []});
     default:
