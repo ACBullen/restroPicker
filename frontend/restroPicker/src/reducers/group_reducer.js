@@ -16,17 +16,19 @@ const defaultGroup = Object.freeze({
 
 const GroupReducer = (state = defaultGroup, action) => {
   Object.freeze(state);
+  let newState = merge({}, state);
 
   switch(action.type) {
     case RECEIVE_GROUP:
-      return merge ({}, defaultGroup, action.data);
+      return merge ({}, newState, action.data);
+    case RECEIVE_RESULT:
+      const result = action.result;
+      return merge ({}, newState, {result: result});
     case RECEIVE_ERRORS:
       const errors = action.errors;
-      return merge({}, {errors: errors, loading: false});
-    case RECEIVE_RESULT:
-
+      return merge ({}, {errors: errors, loading: false});
     case CLEAR_ERRORS:
-      return merge({}, {errors: []});
+      return merge ({}, {errors: []});
     default:
       return state;
   }

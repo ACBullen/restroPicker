@@ -3,10 +3,10 @@ export const RECEIVE_RESULT = 'RECEIVE_RESULT';
 
 export const fetchResult = (groupId) => dispatch => (
   APIUtil.fetchResult(groupId)
-    .then(data => dispatch(receiveResult(data)))
+    .then(result => dispatch(receiveResult(result)))
 );
 
-export const receiveResult = data => ({
+export const receiveResult = result => ({
   type: RECEIVE_RESULT,
-  data
+  result
 });
