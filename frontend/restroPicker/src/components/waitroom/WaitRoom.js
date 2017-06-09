@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Text, View, ListView, Image } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 import { Button, Card, CardSection, Header, Input, Spinner } from '../common';
 
 class WaitRoom extends Component {
@@ -47,15 +48,25 @@ class WaitRoom extends Component {
   }
 
   renderbutton() {
-    if (this.props.group.creator === this.props.currentUser.id) {
+    const { group, currentUser } = this.props;
+
+    if (group.creator === currentUser.id) {
       return(
         <CardSection>
-          <Button onPress={() => {this.props.receiveResult()}}>
+          <Button onPress={() => {this.submit()}}>
             Get Results
           </Button>
         </CardSection>
       );
     }
+  }
+
+  submit() {
+    const { group, fetchResult } = this.props;
+    const groupId = group.id;
+
+    fetchResult(groupId);
+    Actions.end();
   }
 
   render() {
@@ -68,6 +79,9 @@ class WaitRoom extends Component {
           renderRow={this.renderRow.bind(this)}
         />
         {this.renderbutton()}
+
+
+
       </View>
     );
   }
@@ -77,7 +91,7 @@ const styles = {
   nameStyle: {
     fontSize: 18,
     paddingLeft: 20
-  }
+  },
 };
 
 export default WaitRoom;

@@ -11,8 +11,8 @@ const mapStateToProps = (state) => {
 
     //// Test
     users: usersData,
-    currentUser: {"id": 7},
-    group: {"group_code": "6801d7", "creator": 1},
+    currentUser: {"id": 1},
+    group: { "id": 1, "group_code": "6801d7", "results_ready": false, "creator": 1 },
     //// Test
 
   });

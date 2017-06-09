@@ -6,7 +6,7 @@ class Api::ResultsController < ApplicationController
 
     @group = Group.find(params[:id])
     if @group
-      render json: "Here yo results!"
+      render json: ["Hurr yo results!"]
     end
   end
 

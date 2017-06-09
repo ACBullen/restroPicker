@@ -11,7 +11,7 @@ const defaultGroup = Object.freeze({
   users: {},
   errors: [],
   loading: false,
-  result: null,
+  result: [],
 });
 
 const GroupReducer = (state = defaultGroup, action) => {
