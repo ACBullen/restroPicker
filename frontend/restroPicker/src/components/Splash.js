@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Button, Card, CardSection } from './common';
 import { Actions } from 'react-native-router-flux';
 import { receiveLocation } from '../actions/resto_actions';
+import axios from 'axios';
 
 class Splash extends Component {
 
@@ -13,7 +14,6 @@ class Splash extends Component {
     navigator.geolocation.getCurrentPosition((position) => {
       lng = position.coords.longitude;
       lat = position.coords.latitude;
-      console.log(lat);
       this.props.receiveLocation({lng, lat});
     });
   }

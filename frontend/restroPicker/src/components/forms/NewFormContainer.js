@@ -4,6 +4,7 @@ import {
   createGroup,
   joinGroup,
   clearErrors } from '../../actions/group_actions';
+import { receiveRestos } from '../../actions/resto_actions';
 import NewForm from './NewForm';
 
 const mapStateToProps = (state) => {
@@ -13,12 +14,15 @@ const mapStateToProps = (state) => {
     users: state.group.users,
     errors: state.group.errors,
     loading: state.group.loading,
+    location: state.location,
+    restos: state.restos
   });
 };
 
 const mapDispatchToProps = dispatch => ({
   createGroup: user => dispatch(createGroup(user)),
   clearErrors: () => dispatch(clearErrors()),
+  receiveRestos: data => dispatch(receiveRestos(data))
 });
 
 export default connect(

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Modal, Text, TouchableHighlight, View } from 'react-native';
 import { Button, Card, CardSection, Header, Input, Spinner } from '../common';
+import axios from 'axios';
 
 class NewForm extends Component {
   constructor(props) {
@@ -9,6 +10,25 @@ class NewForm extends Component {
       loading: this.props.loading,
       username: '',
     };
+  }
+
+  componentWillMount() {
+    let location = this.props.location;
+    let lng = location.lng;
+    let lat = location.lat;
+    axios({
+      method: 'get',
+      url: "https://api.yelp.com/v3/businesses/search",
+      headers: {"Authorization": "bearer U3LFmhPsqGDeHcf-2uVmQbNj03fI6Wp7gfQti7Ml0YctrPN3PhLwE3GEXT2htv3wJgz90ugTwq0FOap5hJ0rxUNUad81PyqAzmr3yuogEPLQ0jzoVrDEp3UeSkYzWXYx"},
+      params: {
+        term: "restaurants",
+        latitude: lat,
+        longitude: lng,
+        radius: 1000,
+        limit: 10,
+        sort_by: "distance"
+      }
+    }).then(({data}) => this.props.receiveRestos(data.businesses));
   }
 
   componentWillReceiveProps(nextProps) {
