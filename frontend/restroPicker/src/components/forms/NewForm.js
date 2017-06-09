@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import { Modal, Text, TouchableHighlight, View } from 'react-native';
 import { Button, Card, CardSection, Header, Input, Spinner } from '../common';
 import axios from 'axios';
+import { values } from 'lodash';
 
 class NewForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loading: this.props.loading,
       username: '',
     };
   }
@@ -32,25 +32,39 @@ class NewForm extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.state.loading !== nextProps.loading) {
-      return this.setState({loading: nextProps.loading});
+    if (nextProps.group.id) {
+      let group_id = nextProps.group.id;
+      let restos = nextProps.restos;
+      console.log(restos);
+      console.log(this.formatRestos(group_id, values(restos)));
     }
+
   }
 
+  formatRestos(group_id, restos) {
+     return restos.map((resto) => ({
+       group_id: group_id,
+       name: resto.name,
+       rating: resto.rating,
+       yelp_url: resto.url,
+       address: resto.location.display_address[0],
+       image_url: resto.image_url,
+       categories: resto.categories.map((category) => category.title).join(", ")
+     })
+   );
+  }
+
+
+
   renderCreateNewGroupButton() {
-    if (this.state.loading) {
-      return <Spinner size="large" />;
-    } else {
       return (
-        <Button onPress={() => {this.createNewGroup()}}>
+        <Button onPress={() => {this.createNewGroup();}}>
           Create
         </Button>
       );
     }
-  }
 
   createNewGroup() {
-    this.setState({ loading: true });
     const user = this.state;
     this.props.createGroup(user);
   }
