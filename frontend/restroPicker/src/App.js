@@ -8,6 +8,7 @@ class App extends Component {
 
   render() {
     const store = configureStore();
+    global.store = store;
     return (
       <Provider store={store}>
         <Router />
