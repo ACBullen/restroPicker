@@ -35,8 +35,10 @@ class NewForm extends Component {
     if (nextProps.group.id) {
       let group_id = nextProps.group.id;
       let restos = nextProps.restos;
-      console.log(restos);
-      console.log(this.formatRestos(group_id, values(restos)));
+      let restaurants = this.formatRestos(group_id, values(restos));
+      console.log(restaurants);
+      this.props.createRestos(restaurants);
+
     }
 
   }
