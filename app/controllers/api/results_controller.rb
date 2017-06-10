@@ -6,6 +6,10 @@ class Api::ResultsController < ApplicationController
 
     @group = Group.find(params[:id])
     if @group
+      if @group.results_ready == false
+        @group.results_ready = true
+        @group.save
+      end
       render json: ["Hurr yo results!"]
     end
   end

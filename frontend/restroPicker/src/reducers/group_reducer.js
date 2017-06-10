@@ -6,8 +6,8 @@ import { RECEIVE_RESULT } from '../actions/result_actions';
 import merge from 'lodash/merge';
 
 const defaultGroup = Object.freeze({
-  group: null,
-  currentUser: null,
+  group: { "id": 1, "group_code": "6801d7", "results_ready": false, "creator": 1 },
+  currentUser: {"id": 1},
   users: {},
   errors: [],
   loading: false,

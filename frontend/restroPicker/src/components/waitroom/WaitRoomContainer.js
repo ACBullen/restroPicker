@@ -1,25 +1,19 @@
 import { connect } from 'react-redux';
-import { fetchResult } from '../../actions/result_actions';
+import { fetchGroup } from '../../actions/group_actions';
 import WaitRoom from './WaitRoom';
 
 const mapStateToProps = (state) => {
   return ({
-    // group: state.group.group,
-    // currentUser: state.group.currentUser,
-    // users: state.group.users,
+    group: state.group.group,
+    currentUser: state.group.currentUser,
+    users: state.group.users,
     result: state.group.result,
-
-    //// Test
-    users: usersData,
-    currentUser: {"id": 1},
-    group: { "id": 1, "group_code": "6801d7", "results_ready": false, "creator": 1 },
-    //// Test
 
   });
 };
 
 const mapDispatchToProps = dispatch => ({
-  fetchResult: (groupId) => dispatch(fetchResult(groupId)),
+  fetchGroup: (data) => dispatch(fetchGroup(data)),
 });
 
 export default connect(

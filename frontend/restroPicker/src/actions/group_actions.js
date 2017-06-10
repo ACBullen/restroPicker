@@ -3,6 +3,12 @@ export const RECEIVE_GROUP = 'RECEIVE_GROUP';
 export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 
+
+export const fetchGroup = (data) => dispatch => (
+  APIUtil.fetchGroup(data)
+    .then ( group => dispatch(receiveGroup(group)))
+);
+
 export const createGroup = (user) => dispatch => (
   APIUtil.createGroup(user)
   .then(data => dispatch(receiveGroup(data)))

@@ -4,12 +4,54 @@ import { Actions } from 'react-native-router-flux';
 import { Button, Card, CardSection, Header, Input, Spinner } from '../common';
 
 class WaitRoom extends Component {
+  constructor(props) {
+    super(props);
+    const ds = new ListView.DataSource({
+      rowHasChanged: (r1, r2) => r1 !== r2
+    });
+    this.state = {
+      group: this.props.group,
+      currentUser: this.props.currentUser,
+      users: this.props.users,
+      result: this.props.result,
+      dataSource: ds.cloneWithRows(this.props.users),
+    };
+
+    this.fetchData();
+  }
+
   componentWillMount() {
     const ds = new ListView.DataSource({
       rowHasChanged: (r1, r2) => r1 !== r2
     });
+    // this.dataSource = ds.cloneWithRows(this.state.users);
+    this.setState({ dataSource : ds.cloneWithRows(this.props.users)});
+  }
 
-    this.dataSource = ds.cloneWithRows(this.props.users);
+  componentWillUpdate(nextProps) {
+    if (!nextProps.group.results_ready) {
+      const ds = new ListView.DataSource({
+        rowHasChanged: (r1, r2) => r1 !== r2
+      });
+      this.setState({
+        group: nextProps.group,
+        currentUser: nextProps.currentUser,
+        users: nextProps.users,
+        result: nextProps.result,
+        datasource: ds.cloneWithRows(nextProps.users),
+      });
+      setTimeout(this.fetchData.bind(this), 1000);
+    }
+    if (nextProps.group.results_ready) {
+      Actions.end();
+    }
+  }
+
+  fetchData() {
+    this.props.fetchGroup({
+      group_id : this.state.group.id,
+      id : this.state.currentUser.id,
+    });
   }
 
   renderRow(user) {
@@ -48,7 +90,7 @@ class WaitRoom extends Component {
   }
 
   renderbutton() {
-    const { group, currentUser } = this.props;
+    const { group, currentUser } = this.state;
 
     if (group.creator === currentUser.id) {
       return(
@@ -62,20 +104,16 @@ class WaitRoom extends Component {
   }
 
   submit() {
-    const { group, fetchResult } = this.props;
-    const groupId = group.id;
-
-    fetchResult(groupId);
     Actions.end();
   }
 
   render() {
-    const code = "Group Code: " + this.props.group.group_code;
+    const code = "Group Code: " + this.state.group.group_code;
     return (
       <View>
         <Header headerText={code}></Header>
         <ListView
-          dataSource={this.dataSource}
+          dataSource={this.state.dataSource}
           renderRow={this.renderRow.bind(this)}
         />
         {this.renderbutton()}

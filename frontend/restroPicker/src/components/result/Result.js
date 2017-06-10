@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
 import { Text, View, ListView, Image } from 'react-native';
 import { Button, Card, CardSection, Header, Input, Spinner } from '../common';
-import { connect } from 'react-redux';
 
 class Result extends Component {
+  componentWillMount(){
+    const { group, fetchResult } = this.props;
+    const groupId = group.id;
+
+    fetchResult(groupId);
+  }
   render () {
     const code = "Group Code: " + this.props.group.group_code;
     return (
@@ -27,16 +32,4 @@ const styles = {
   }
 };
 
-const mapStateToProps = (state) => {
-  return ({
-    // group: state.group.group,
-    result: state.group.result,
-
-    //// Test
-    group: { "id": 1, "group_code": "6801d7", "results_ready": false, "creator": 1 },
-    //// Test
-
-  });
-};
-
-export default connect(mapStateToProps)(Result);
+export default Result;
