@@ -1,13 +1,14 @@
 import {
   RECEIVE_GROUP,
   RECEIVE_ERRORS,
-  CLEAR_ERRORS } from '../actions/group_actions';
+  CLEAR_ERRORS,
+  CLEAR_GROUP } from '../actions/group_actions';
 import { RECEIVE_RESULT } from '../actions/result_actions';
 import merge from 'lodash/merge';
 
 const defaultGroup = Object.freeze({
-  group: { "id": 1, "group_code": "6801d7", "results_ready": false, "creator": 1 },
-  currentUser: {"id": 1},
+  group: {},
+  currentUser: {},
   users: {},
   errors: [],
   loading: false,
@@ -27,6 +28,8 @@ const GroupReducer = (state = defaultGroup, action) => {
     case RECEIVE_ERRORS:
       const errors = action.errors;
       return merge ({}, {errors: errors, loading: false});
+    case CLEAR_GROUP:
+      return defaultGroup;
     case CLEAR_ERRORS:
       return merge ({}, {errors: []});
     default:

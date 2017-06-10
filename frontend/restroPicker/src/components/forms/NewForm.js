@@ -38,7 +38,9 @@ class NewForm extends Component {
       let restos = nextProps.restos;
       let restaurants = this.formatRestos(group_id, values(restos));
       this.props.createRestos(restaurants);
-      Actions.restoList();
+      // Actions.restoList();
+
+      Actions.room();
     }
 
   }

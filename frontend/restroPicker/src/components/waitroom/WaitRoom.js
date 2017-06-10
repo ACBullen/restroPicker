@@ -3,7 +3,9 @@ import { Text, View, ListView, Image } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { Button, Card, CardSection, Header, Input, Spinner } from '../common';
 
+
 class WaitRoom extends Component {
+
   constructor(props) {
     super(props);
     const ds = new ListView.DataSource({
@@ -16,19 +18,20 @@ class WaitRoom extends Component {
       result: this.props.result,
       dataSource: ds.cloneWithRows(this.props.users),
     };
-
-    this.fetchData();
   }
 
   componentWillMount() {
-    const ds = new ListView.DataSource({
-      rowHasChanged: (r1, r2) => r1 !== r2
-    });
-    // this.dataSource = ds.cloneWithRows(this.state.users);
-    this.setState({ dataSource : ds.cloneWithRows(this.props.users)});
+    // const ds = new ListView.DataSource({
+    //   rowHasChanged: (r1, r2) => r1 !== r2
+    // });
+    // // this.dataSource = ds.cloneWithRows(this.state.users);
+    // this.setState({ dataSource : ds.cloneWithRows(this.props.users)});
+
+    // this.fetchData();
   }
 
-  componentWillUpdate(nextProps) {
+  componentWillReceiveProps(nextProps) {
+    console.log("hit");
     if (!nextProps.group.results_ready) {
       const ds = new ListView.DataSource({
         rowHasChanged: (r1, r2) => r1 !== r2
@@ -40,7 +43,7 @@ class WaitRoom extends Component {
         result: nextProps.result,
         datasource: ds.cloneWithRows(nextProps.users),
       });
-      setTimeout(this.fetchData.bind(this), 1000);
+      setTimeout(this.fetchData.bind(this), 30000);
     }
     if (nextProps.group.results_ready) {
       Actions.end();
@@ -95,7 +98,7 @@ class WaitRoom extends Component {
     if (group.creator === currentUser.id) {
       return(
         <CardSection>
-          <Button onPress={() => {this.submit()}}>
+          <Button onPress={() => {this.submit();}}>
             Get Results
           </Button>
         </CardSection>
@@ -104,7 +107,8 @@ class WaitRoom extends Component {
   }
 
   submit() {
-    Actions.end();
+    this.props.fetchResult(this.state.group.id);
+    this.fetchData();
   }
 
   render() {

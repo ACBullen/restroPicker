@@ -2,7 +2,7 @@ import * as APIUtil from '../util/group_api_util';
 export const RECEIVE_GROUP = 'RECEIVE_GROUP';
 export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
-
+export const CLEAR_GROUP = "CLEAR_GROUP";
 
 export const fetchGroup = (data) => dispatch => (
   APIUtil.fetchGroup(data)
@@ -24,7 +24,9 @@ export const joinGroup = (user) => dispatch => (
       }
     })
 );
-
+export const clearGroup = ()=>({
+  type: CLEAR_GROUP
+});
 export const receiveGroup = data => ({
   type: RECEIVE_GROUP,
   data
