@@ -8,11 +8,11 @@ class RestoList extends Component {
   }
 
   componentWillMount() {
-    //fetch restaurants from DB
-    //update the state
+    let group_id = this.props.group.id;
+    setTimeout(() =>    axios.get(`http://localhost:3000/api/restaurants?group=${group_id}`)
+      .then(response => console.log(response)), 1000)
+    ;
 }
-
-
 
 
 

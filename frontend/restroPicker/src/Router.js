@@ -1,7 +1,7 @@
 import React from 'react';
 import { Scene, Router } from 'react-native-router-flux';
 import Splash from './components/Splash';
-import RestoList from './components/restos/RestoList';
+import RestoListContainer from './components/restos/RestoListContainer';
 import NewFormContainer from './components/forms/NewFormContainer';
 import JoinFormContainer from  './components/forms/JoinFormContainer';
 
@@ -26,7 +26,7 @@ const RouterComponent = () => {
 
       <Scene
             key="restoList"
-            component={RestoList}
+            component={RestoListContainer}
             title="Ranking Time!"
             />
     </Router>

@@ -1,18 +1,18 @@
 import { connect } from 'react-redux';
 
 import {
-    createRestos } from '../../resto_actions';
+    receiveRestos} from '../../actions/resto_actions';
 import RestoList from './RestoList';
 
 const mapStateToProps = (state) => {
   return ({
-    location: state.location,
+    group: state.group.group,
 
   });
 };
 
 const mapDispatchToProps = dispatch => ({
-  createRestos: ({lat, lng}) => dispatch(createRestos({lat, lng}))
+  receiveRestos: data => dispatch(receiveRestos(data))
 });
 
 export default connect(

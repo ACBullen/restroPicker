@@ -3,10 +3,8 @@ export const RECEIVE_LOCATION = 'RECEIVE_LOCATION';
 export const RECEIVE_RESTOS = 'RECEIVE_RESTOS';
 
 export const createRestos = restaurants => dispatch => (
-  APIUtil.populateRestos(restaurants)
-  .then(data => dispatch(receiveRestos(data)))
+   APIUtil.populateRestos(restaurants)
 );
-
 
 export const receiveLocation = data => ({
   type: RECEIVE_LOCATION,
