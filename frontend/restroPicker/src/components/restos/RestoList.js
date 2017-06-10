@@ -3,8 +3,13 @@ import { View, Text } from 'react-native';
 import axios from 'axios';
 
 class RestoList extends Component {
+  constructor(props) {
+    super(props);
+  }
 
   componentWillMount() {
+    //fetch restaurants from DB
+    //update the state
 }
 
 
