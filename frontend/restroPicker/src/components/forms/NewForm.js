@@ -3,6 +3,7 @@ import { Modal, Text, TouchableHighlight, View } from 'react-native';
 import { Button, Card, CardSection, Header, Input, Spinner } from '../common';
 import axios from 'axios';
 import { values } from 'lodash';
+import { Actions } from 'react-native-router-flux';
 
 class NewForm extends Component {
   constructor(props) {
@@ -36,9 +37,8 @@ class NewForm extends Component {
       let group_id = nextProps.group.id;
       let restos = nextProps.restos;
       let restaurants = this.formatRestos(group_id, values(restos));
-      console.log(restaurants);
       this.props.createRestos(restaurants);
-
+      Actions.restoList();
     }
 
   }

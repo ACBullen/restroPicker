@@ -4,8 +4,6 @@ export const RECEIVE_RESTOS = 'RECEIVE_RESTOS';
 
 export const createRestos = data => dispatch => (
   APIUtil.populateRestos(data)
-  .then(restos => dispatch(receiveRestos(restos)))
-
 );
 
 
