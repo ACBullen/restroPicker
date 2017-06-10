@@ -3,13 +3,25 @@ class Api::RestaurantsController < ApplicationController
     # Params assumed to be an array of objects returned from the initial
     # yelp query
     # As yet untested due to postman weirdness
-    @restaurants = params[:restaurants]
+    # @restaurants = resto_params
+    #
+    # @restaurants.each do |restaurant|
+    #   # restaurant.group_id = params[:group_id]
 
-    @restaurants.each do |restaurant|
-      restaurant.group_id = params[:group_id]
-      Restaurant.create(restaurant)
-    end
+    # hash = {}
+    # hash[:info] = resto_params["info"]
+    # p hash
 
-    render 'api/groups/group'
+    # restaurants = resto_params.info
+      @restaurants =
+       resto_params[:restaurants].map do
+         |r| Restaurant.create(r)
+     end
+    render :show
+  end
+
+  private
+  def resto_params
+    params.permit(:restaurants => [:group_id, :name, :rating, :yelp_url, :address, :image_url, :categories])
   end
 end
