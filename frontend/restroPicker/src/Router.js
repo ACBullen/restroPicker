@@ -4,7 +4,7 @@ import Splash from './components/Splash';
 import RestoListContainer from './components/restos/RestoListContainer';
 import NewFormContainer from './components/forms/NewFormContainer';
 import JoinFormContainer from  './components/forms/JoinFormContainer';
-import RankingPage from './components/restos/RankingPage';
+import RankingPageContainer from './components/restos/RankingPageContainer';
 import { createRankings } from './actions/resto_actions';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
@@ -39,7 +39,7 @@ const RouterComponent = () => {
           <Scene
               title="Confirm Rankings"
               key="rankingPage"
-              component={RankingPage}
+              component={RankingPageContainer}
               />
         </Scene>
       </Router>

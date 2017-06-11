@@ -29,6 +29,7 @@ class RestoList extends Component {
         this.setState({ data: response.data.restaurants });
         this.props.receiveRestos(this.state.data);
 
+
       }), 1000);
   }
 
@@ -36,11 +37,22 @@ class RestoList extends Component {
     return <RestoItem data={data} active={active} />;
   }
 
-  // change(nextOrder) {
-  //   this.setState({ order: nextOrder });
-  // }
+  createOrder(restaurants) {
+    let order = {};
+    let rest_ids = Object.keys(restaurants);
+    let end = rest_ids.length;
+    let i = 0;
+    while (i < end) {
+      order[i] = rest_ids[i];
+      i += 1;
+    }
+    console.log(order);
+    return order;
+  }
+
 
   render() {
+    this.props.receiveOrder(this.createOrder(this.state.data));
     return (
       <View style = {styles.container}>
         <Text style={styles.title}>Group Code: {this.props.group.group_code}</Text>
