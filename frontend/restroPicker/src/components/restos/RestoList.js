@@ -8,6 +8,7 @@ import {
 import axios from 'axios';
 import { values } from 'lodash';
 import RestoItem from './RestoItem';
+import { Button } from '../common';
 import SortableList from 'react-native-sortable-list';
 
 const window = Dimensions.get('window');
@@ -33,19 +34,27 @@ class RestoList extends Component {
     return <RestoItem data={data} active={active} />;
   }
 
-  change(nextOrder) {
-    this.setState({ order: nextOrder });
+  // change(nextOrder) {
+  //   this.setState({ order: nextOrder });
+  // }
+
+  submitNewRankings() {
+    const ranking = this.state.order;
+    this.props.createRankings(ranking);
   }
 
   render() {
     return (
       <View style = {styles.container}>
+        <Button onPress={() => {this.submitNewRankings();}}>
+          Submit
+        </Button>
         <SortableList
           style={styles.list}
           contentContainerStyle={styles.contentContainer}
           data={this.state.data}
           renderRow={this.renderRow}
-          onChangeOrder={this.change}/>
+          onChangeOrder={nextOrder => this.setState({ order: nextOrder })}/>
       </View>
     );
   }

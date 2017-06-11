@@ -4,6 +4,7 @@ import Splash from './components/Splash';
 import RestoListContainer from './components/restos/RestoListContainer';
 import NewFormContainer from './components/forms/NewFormContainer';
 import JoinFormContainer from  './components/forms/JoinFormContainer';
+import { createRankings } from './actions/resto_actions';
 
 const RouterComponent = () => {
   return (
