@@ -90,14 +90,19 @@ other choices, and that low choices will largely serve as tie-breakers.
 
 ### HTTP Polling
 
-Keeping the group in sync such that the
+Keeping the group in sync such that the group leader knows when the group
+members have submitted their rankings and the server has acknowledged
+their receipt is key to ensuring the smooth operation of the app. To
+provide this functionality, the app uses interval polling of the server
+to check if users have submitted their information as yet, and then, once
+the creator submits and the results are calculated, to take them to the results page (and then stop requesting information).
 ____
 ## Future Features and Improvements
 
 #### WebSockets
 
-HTTP polling while reasonably reliable to keep the group informed as to
-who has submitted their rankings and who is still considering, it is not
+HTTP polling, while reasonably reliable to keep the group informed as to
+who has submitted their rankings and who is still considering, is not
 the most efficient way of synchronizing the app state. WebSockets would
 allow for a lower number of database queries and more immediate feedback
 on the state of the group.
