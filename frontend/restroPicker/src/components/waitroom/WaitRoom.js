@@ -21,8 +21,16 @@ class WaitRoom extends Component {
     this.endcheck = global.setInterval(this.fetchData.bind(this), 1000);
   }
 
+  fetchData() {
+    const data = ({
+      group_id: this.state.group.id,
+      id: this.state.currentUser.id,
+    });
+    this.props.fetchGroup(data);
+  }
+
   componentWillReceiveProps(nextProps) {
-    if(!this.end){
+    // if(!this.end){
       console.log("hit");
       if (!nextProps.group.results_ready) {
         const ds = new ListView.DataSource({
@@ -37,7 +45,7 @@ class WaitRoom extends Component {
         });
 
       }
-    }
+    // }
     if (nextProps.group.results_ready) {
       Actions.end();
     }
