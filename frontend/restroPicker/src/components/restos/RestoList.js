@@ -18,15 +18,17 @@ class RestoList extends Component {
     super(props);
     this.state = {
       data: {},
-      order: []
     };
   }
+  // .then(this.props.receiveRestos(this.state.data));
 
   componentWillMount() {
     let group_id = this.props.group.id;
     setTimeout(() =>    axios.get(`http://localhost:3000/api/restaurants?group=${group_id}`)
       .then(response => {
         this.setState({ data: response.data.restaurants });
+        this.props.receiveRestos(this.state.data);
+
       }), 1000);
   }
 
@@ -47,7 +49,7 @@ class RestoList extends Component {
           contentContainerStyle={styles.contentContainer}
           data={this.state.data}
           renderRow={this.renderRow}
-          onChangeOrder={nextOrder => this.setState({ order: nextOrder })}/>
+          onChangeOrder={nextOrder => this.props.receiveOrder(nextOrder)}/>
       </View>
     );
   }
