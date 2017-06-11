@@ -32,6 +32,10 @@ class RestoList extends Component {
     return <RestoItem data={data} active={active} />;
   }
 
+  change(nextOrder) {
+    alert(nextOrder);
+  }
+
   render() {
     return (
       <View style = {styles.container}>
@@ -39,7 +43,8 @@ class RestoList extends Component {
           style={styles.list}
           contentContainerStyle={styles.contentContainer}
           data={this.state.data}
-          renderRow={this.renderRow} />
+          renderRow={this.renderRow}
+          onChangeOrder={this.change}/>
       </View>
     );
   }
