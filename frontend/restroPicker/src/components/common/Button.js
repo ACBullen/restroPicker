@@ -1,23 +1,23 @@
 import React from 'react';
-import { Text, TouchableOpacity } from 'react-native';
+import { Text, TouchableOpacity, TouchableHighlight } from 'react-native';
 
 const Button = ({ onPress, children }) => {
   const { buttonStyle, textStyle } = styles;
 
   return (
-    <TouchableOpacity onPress={onPress} style={buttonStyle}>
+    <TouchableHighlight onPress={onPress} style={buttonStyle} underlayColor={'#c0c0c0'}>
       <Text style={textStyle}>
         {children}
       </Text>
-    </TouchableOpacity>
+    </TouchableHighlight>
   );
 };
 
 const styles = {
   textStyle: {
     alignSelf: 'center',
-    color: '#007aff',
-    fontSize: 16,
+    color: 'black',
+    fontSize: 18,
     fontWeight: '600',
     paddingTop: 10,
     paddingBottom: 10

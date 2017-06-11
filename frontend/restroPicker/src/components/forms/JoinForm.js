@@ -47,7 +47,7 @@ class JoinForm extends Component {
               </CardSection>
               <CardSection>
                 <Input
-                  placeholder="What's your group code?"
+                  placeholder="Group code?"
                   label="Code"
                   value={this.state.group_code}
                   onChangeText={text => this.setState({ group_code: text })}

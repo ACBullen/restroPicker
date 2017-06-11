@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, TouchableHighlight, View } from 'react-native';
+import { Text, TouchableHighlight, View, Image } from 'react-native';
 import { connect } from 'react-redux';
 import { Button, Card, CardSection } from './common';
 import { Actions } from 'react-native-router-flux';
@@ -22,6 +22,14 @@ class Splash extends Component {
     return (
       <View>
         <Card>
+          <CardSection>
+            <View style={{paddingLeft: 25, paddingRight: 25, paddingTop: 30, paddingBottom: 30 }}>
+              <Image
+                style={{width: 300, height: 300}}
+                source={require('./dinner-plate.png')}
+              />
+            </View>
+          </CardSection>
           <CardSection>
             <Button onPress={ () => {Actions.newGroupForm();}}>
               New Group

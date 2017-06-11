@@ -14,6 +14,16 @@ class Result extends Component {
             {this.props.result}
           </Text>
         </Card>
+        <Card>
+          <Text style={styles.resultTextStyle}>
+            {this.props.result}
+          </Text>
+        </Card>
+        <Card>
+          <Text style={styles.resultTextStyle}>
+            {this.props.result}
+          </Text>
+        </Card>
       </View>
     );
   }
@@ -23,7 +33,8 @@ const styles = {
   resultTextStyle: {
     fontSize: 20,
     alignSelf: 'center',
-    color: 'red'
+    color: 'white',
+    fontWeight: '800',
   }
 };
 
