@@ -17,7 +17,6 @@ class WaitRoom extends Component {
       result: this.props.result,
       dataSource: ds.cloneWithRows(this.props.users),
     };
-    this.end = false;
     this.endcheck = global.setInterval(this.fetchData.bind(this), 1000);
   }
 
@@ -48,6 +47,10 @@ class WaitRoom extends Component {
     if (nextProps.group.results_ready) {
       Actions.end({type: "reset"});
     }
+  }
+
+  componentWillUnmount() {
+    global.clearInterval(this.endcheck);
   }
 
 
@@ -102,8 +105,6 @@ class WaitRoom extends Component {
 
   submit() {
     this.props.fetchResult(this.state.group.id);
-    this.end = true;
-    global.clearInterval(this.endcheck);
     this.fetchData();
     setTimeout(() => Actions.end({type: "reset"}), 1000);
   }
