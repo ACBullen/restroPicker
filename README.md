@@ -44,7 +44,8 @@ group and all of its associated users, restaurants, and rankings.
 /ranking .gif/
 
 With the somewhat limited interface of a phone screen, the need for an
-intuitive and easy
+intuitive and easy method for creating a ranked order of restaurants
+without typing or 
 
 ### Weighted Choice Algorithm
 
