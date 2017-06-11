@@ -8,7 +8,7 @@ const RestoReducer = (state = {}, action) => {
   switch (action.type) {
     case RECEIVE_RESTOS:
       return merge({}, action.data);
-    
+
     default:
       return state;
   }

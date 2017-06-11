@@ -1,8 +1,4 @@
 class Api::GroupsController < ApplicationController
-  def show
-    @group = Group.find_by(group_code: params[:group_code])
-    render :show
-  end
 
   def create
     @user = User.new(username: params[:username])

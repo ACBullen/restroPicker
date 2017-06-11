@@ -6,12 +6,8 @@ json.set! "currentUser" do
   json.partial! "user", user: @user
 end
 
-json.set! "users" do
-  @group.users.each do |user|
-    json.set! user.id do
-      json.partial! "user", user: user
-    end
-  end
+json.users(@group.users) do |user|
+  json.partial! "user", user: user
 end
 
 json.set! "restaurants" do
