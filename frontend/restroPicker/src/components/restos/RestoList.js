@@ -38,17 +38,10 @@ class RestoList extends Component {
   //   this.setState({ order: nextOrder });
   // }
 
-  submitNewRankings() {
-    const ranking = this.state.order;
-    this.props.createRankings(ranking);
-  }
-
   render() {
     return (
       <View style = {styles.container}>
-        <Button onPress={() => {this.submitNewRankings();}}>
-          Submit
-        </Button>
+        <Text style={styles.title}>Group Code: {this.props.group.group_code}</Text>
         <SortableList
           style={styles.list}
           contentContainerStyle={styles.contentContainer}
@@ -69,6 +62,11 @@ const styles = {
   },
   list: {
     flex: 1,
+  },
+  title: {
+    fontSize: 20,
+    paddingVertical: 20,
+    color: '#999999',
   },
 
   contentContainer: {

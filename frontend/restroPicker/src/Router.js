@@ -31,13 +31,13 @@ const RouterComponent = () => {
         <Scene key="rank">
           <Scene
               title="Ranking Time!"
-              rightTitle="Submit"
-              onRight={() => console.log('right!!')}
+              rightTitle="Confirm"
+              onRight={() => Actions.rankingPage()}
               key="restoList"
               component={RestoListContainer}
               />
           <Scene
-              title="Confirm your Rankings"
+              title="Confirm Rankings"
               key="rankingPage"
               component={RankingPage}
               />
