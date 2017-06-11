@@ -40,7 +40,7 @@ class Api::ResultsController < ApplicationController
       end
       rankTotals[key] = total
     end
-    return rankTotals.to_a.sort {|a,b| b[1] <=> a[1]}.map{|a| a[0]}
+    return rankTotals.to_a.sort{|a,b| b[1] <=> a[1]}.map{|a| a[0]}[0..2]
   end
 
   def getPowerValues(options)

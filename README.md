@@ -5,10 +5,7 @@ You're in a group, deciding on where to go to eat. Most people are polite
 about their desires and defer to the group, so the one or two people with
 the most outspoken opinions control the direction of the group. All well
 and good for them, but perhaps those who defer would have been happier
-elsewhere? How to make a choice without an extended debate while remaining polite?
-Enter RestoPicker. This iOS app leverages the Yelp api and a weighted
-choice algorithm to arrive at a choice of maximum happiness amongst local
-options for your group of friends or coworkers with a minimum of fuss.
+elsewhere? How to make a choice without an extended debate while remaining polite? Enter RestoPicker. This iOS app leverages the Yelp api and a weighted choice algorithm to arrive at a choice of maximum happiness amongst local options for your group of friends or coworkers with a minimum of fuss.
 _____
 
 ## Technology
@@ -44,6 +41,10 @@ group and all of its associated users, restaurants, and rankings.
 
 
 ### Ranking Interface
+/ranking .gif/
+
+With the somewhat limited interface of a phone screen, the need for an
+intuitive and easy
 
 ### Weighted Choice Algorithm
 
@@ -54,10 +55,38 @@ choices for the group. The algorithm itself weights the ranks according
 to an exponentially decreasing level of power, ie. the restaurant a user
 has ranked first is worth 1 point, second is worth 1/2 point, third is worth 1/4, etc.
 ```Ruby
+def best_choice_algo(restaurants)
 
+  rest_options = {}
+  restaurants.each do |rest|
+    rest_options[rest.id] = []
+    rest.rankings.each do |ranking|
+      rest_options[rest.id] << ranking.rank
+    end
+  end
+  values = getPowerValues(rest_options)
+  rankTotals = {}
 
+  rest_options.each do |key, val|
+    n = val.length
+    total = 0
+    while n > 0
+      rank_to_be_added = val[n - 1]
+      value_to_be_added = values[rank_to_be_added - 1]
+      total += value_to_be_added
+      n -= 1
+    end
+    rankTotals[key] = total
+  end
+  return rankTotals.to_a.sort {|a,b| b[1] <=> a[1]}.map{|a| a[0]}[0..2]
+end
 ```
+(note: getPowerValues returns the values each rank should have in order,
+  which ensures correct ranking even if the number of restaurants varies
+  for one reason or another)
 
+This ensures that first choices have overwhelming weight when compared to
+other choices, and that low choices will largely serve as tie-breakers.
 
 ### HTTP Polling
 
