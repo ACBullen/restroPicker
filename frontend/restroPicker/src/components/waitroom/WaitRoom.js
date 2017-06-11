@@ -5,7 +5,6 @@ import { Button, Card, CardSection, Header, Input, Spinner } from '../common';
 
 
 class WaitRoom extends Component {
-
   constructor(props) {
     super(props);
     const ds = new ListView.DataSource({
@@ -18,44 +17,32 @@ class WaitRoom extends Component {
       result: this.props.result,
       dataSource: ds.cloneWithRows(this.props.users),
     };
-  }
-
-  componentWillMount() {
-    // const ds = new ListView.DataSource({
-    //   rowHasChanged: (r1, r2) => r1 !== r2
-    // });
-    // // this.dataSource = ds.cloneWithRows(this.state.users);
-    // this.setState({ dataSource : ds.cloneWithRows(this.props.users)});
-
-    // this.fetchData();
+    this.end = false;
+    this.endcheck = global.setInterval(this.fetchData.bind(this), 1000);
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log("hit");
-    if (!nextProps.group.results_ready) {
-      const ds = new ListView.DataSource({
-        rowHasChanged: (r1, r2) => r1 !== r2
-      });
-      this.setState({
-        group: nextProps.group,
-        currentUser: nextProps.currentUser,
-        users: nextProps.users,
-        result: nextProps.result,
-        datasource: ds.cloneWithRows(nextProps.users),
-      });
-      setTimeout(this.fetchData.bind(this), 30000);
+    if(!this.end){
+      console.log("hit");
+      if (!nextProps.group.results_ready) {
+        const ds = new ListView.DataSource({
+          rowHasChanged: (r1, r2) => r1 !== r2
+        });
+        this.setState({
+          group: nextProps.group,
+          currentUser: nextProps.currentUser,
+          users: nextProps.users,
+          result: nextProps.result,
+          datasource: ds.cloneWithRows(nextProps.users),
+        });
+
+      }
     }
     if (nextProps.group.results_ready) {
       Actions.end();
     }
   }
 
-  fetchData() {
-    this.props.fetchGroup({
-      group_id : this.state.group.id,
-      id : this.state.currentUser.id,
-    });
-  }
 
   renderRow(user) {
     return (
@@ -108,7 +95,10 @@ class WaitRoom extends Component {
 
   submit() {
     this.props.fetchResult(this.state.group.id);
+    this.end = true;
+    global.clearInterval(this.endcheck);
     this.fetchData();
+    setTimeout(() => Actions.end(), 1000);
   }
 
   render() {
@@ -121,9 +111,6 @@ class WaitRoom extends Component {
           renderRow={this.renderRow.bind(this)}
         />
         {this.renderbutton()}
-
-
-
       </View>
     );
   }

@@ -21,31 +21,3 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(WaitRoom);
-
-
-
-
-
-
-
-//// Test
-const usersData = [
-    {
-      "id": 1,
-      "group_id": 1,
-      "username": "Bob",
-      "ranking_ready": false
-    },
-    {
-      "id": 2,
-      "group_id": 1,
-      "username": "Rob",
-      "ranking_ready": true
-    },
-    {
-      "id": 3,
-      "group_id": 1,
-      "username": "Tod",
-      "ranking_ready": false
-    },
-  ];

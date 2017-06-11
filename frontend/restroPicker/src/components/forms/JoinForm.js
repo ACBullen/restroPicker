@@ -14,7 +14,7 @@ class JoinForm extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.errors.length === 0) {
-      Actions.room();
+      Actions.restoList();
     }
   }
 
