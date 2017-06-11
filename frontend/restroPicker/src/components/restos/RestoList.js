@@ -1,29 +1,33 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
-import { ListView } from 'react-native';
+import {
+  View,
+  Text,
+  Animated,
+  Easing,
+  StyleSheet,
+  Image,
+  Dimensions,
+  Platform } from 'react-native';
 import axios from 'axios';
 import { values } from 'lodash';
 import RestoItem from './RestoItem';
+import SortableList from 'react-native-sortable-list';
+
+const window = Dimensions.get('window');
 
 class RestoList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      dataSource: new ListView.DataSource({
-        rowHasChanged: (r1, r2) => r1 !== r2
-      })
+      data: {}
     };
   }
 
   componentWillMount() {
     let group_id = this.props.group.id;
-    const ds = new ListView.DataSource({
-      rowHasChanged: (r1, r2) => r1 !== r2
-    });
     setTimeout(() =>    axios.get(`http://localhost:3000/api/restaurants?group=${group_id}`)
       .then(response => {
-        this.setState({ dataSource: ds.cloneWithRows(values(response.data.restaurants))
-        });
+        this.setState({ data: response.data.restaurants });
       }), 1000);
   }
 
@@ -33,7 +37,7 @@ class RestoList extends Component {
 
   render() {
     return (
-      <ListView
+      <View
         dataSource={this.state.dataSource}
         renderRow ={this.renderRow}
 
@@ -41,5 +45,14 @@ class RestoList extends Component {
     );
   }
 }
+
+const styles = {
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#eee'
+  }
+};
 
 export default RestoList;
