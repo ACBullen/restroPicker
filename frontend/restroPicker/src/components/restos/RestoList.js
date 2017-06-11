@@ -2,12 +2,9 @@ import React, { Component } from 'react';
 import {
   View,
   Text,
-  Animated,
-  Easing,
-  StyleSheet,
   Image,
   Dimensions,
-  Platform } from 'react-native';
+  } from 'react-native';
 import axios from 'axios';
 import { values } from 'lodash';
 import RestoItem from './RestoItem';
@@ -31,17 +28,19 @@ class RestoList extends Component {
       }), 1000);
   }
 
-  renderRow(resto) {
-    return <RestoItem resto={resto} />;
+  renderRow({data, active}) {
+    return <RestoItem data={data} active={active} />;
   }
 
   render() {
     return (
-      <View
-        dataSource={this.state.dataSource}
-        renderRow ={this.renderRow}
-
-      />
+      <View style = {styles.container}>
+        <SortableList
+          style={styles.list}
+          contentContainerStyle={styles.contentContainer}
+          data={this.state.data}
+          renderRow={this.renderRow} />
+      </View>
     );
   }
 }
@@ -52,7 +51,15 @@ const styles = {
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#eee'
-  }
-};
+  },
+  list: {
+    flex: 1,
+  },
+
+  contentContainer: {
+    width: window.width,
+    paddingHorizontal: 30,
+      }
+  };
 
 export default RestoList;
