@@ -1,0 +1,19 @@
+dependencies: \
+  /Users/alexmain/restroPicker/frontend/restroPicker/node_modules/react-native/Libraries/NativeAnimation/Drivers/RCTSpringAnimation.m \
+  /Users/alexmain/restroPicker/frontend/restroPicker/node_modules/react-native/Libraries/NativeAnimation/Drivers/RCTSpringAnimation.h \
+  /Users/alexmain/restroPicker/frontend/restroPicker/node_modules/react-native/Libraries/NativeAnimation/Drivers/RCTAnimationDriver.h \
+  /Users/alexmain/restroPicker/frontend/restroPicker/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTBridgeModule.h \
+  /Users/alexmain/restroPicker/frontend/restroPicker/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTDefines.h \
+  /Users/alexmain/restroPicker/frontend/restroPicker/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTConvert.h \
+  /Users/alexmain/restroPicker/frontend/restroPicker/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTAnimationType.h \
+  /Users/alexmain/restroPicker/frontend/restroPicker/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTBorderStyle.h \
+  /Users/alexmain/restroPicker/frontend/restroPicker/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTLog.h \
+  /Users/alexmain/restroPicker/frontend/restroPicker/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTAssert.h \
+  /Users/alexmain/restroPicker/frontend/restroPicker/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTUtils.h \
+  /Users/alexmain/restroPicker/frontend/restroPicker/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTPointerEvents.h \
+  /Users/alexmain/restroPicker/frontend/restroPicker/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTTextDecorationLineType.h \
+  /Users/alexmain/restroPicker/frontend/restroPicker/ios/build/Build/Products/Debug-iphonesimulator/include/yoga/Yoga.h \
+  /Users/alexmain/restroPicker/frontend/restroPicker/ios/build/Build/Products/Debug-iphonesimulator/include/yoga/YGEnums.h \
+  /Users/alexmain/restroPicker/frontend/restroPicker/ios/build/Build/Products/Debug-iphonesimulator/include/yoga/YGMacros.h \
+  /Users/alexmain/restroPicker/frontend/restroPicker/node_modules/react-native/Libraries/NativeAnimation/Nodes/RCTValueAnimatedNode.h \
+  /Users/alexmain/restroPicker/frontend/restroPicker/node_modules/react-native/Libraries/NativeAnimation/Nodes/RCTAnimatedNode.h

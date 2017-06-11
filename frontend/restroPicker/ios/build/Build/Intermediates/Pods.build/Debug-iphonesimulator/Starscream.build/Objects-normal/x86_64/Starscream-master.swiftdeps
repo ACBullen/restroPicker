@@ -1,0 +1,6 @@
+version: "Apple Swift version 3.1 (swiftlang-802.0.53 clang-802.0.42)"
+options: "9f351eef77baba33a998c1e4325a4c55"
+build_time: [550258732, 107707000]
+inputs:
+  "/Users/alexmain/restroPicker/frontend/restroPicker/ios/Pods/Starscream/Source/SSLSecurity.swift": [550256577, 0]
+  "/Users/alexmain/restroPicker/frontend/restroPicker/ios/Pods/Starscream/Source/WebSocket.swift": [550256577, 0]

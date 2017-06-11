@@ -12,4 +12,21 @@
  *
  *= require_tree .
  *= require_self
+ *= require bootstrap.min
+ *= require font-awesome.min
+ *= require material-design-iconic-font.min
+ *= require magnific-popup
+ *= require venobox
+ *= require meanmenu.min
+ *= require slick
+ *= require owl.carousel
+ *= require owl.theme
+ *= require owl.transitions
+ *= require animate
+ *= require normalize
+ *= require main
+ *= require style
+ *= require responsive
+ *= require color-1
+
  */

@@ -1,0 +1,10 @@
+version: "Apple Swift version 3.1 (swiftlang-802.0.53 clang-802.0.42)"
+options: "a609d45461b46203d65d1a0a208dc758"
+build_time: [550258741, 196729000]
+inputs:
+  "/Users/alexmain/restroPicker/frontend/restroPicker/ios/Pods/ActionCableClient/Source/Classes/ActionCableClient.swift": [550256577, 0]
+  "/Users/alexmain/restroPicker/frontend/restroPicker/ios/Pods/ActionCableClient/Source/Classes/Channel.swift": [550256577, 0]
+  "/Users/alexmain/restroPicker/frontend/restroPicker/ios/Pods/ActionCableClient/Source/Classes/Constants.swift": [550256577, 0]
+  "/Users/alexmain/restroPicker/frontend/restroPicker/ios/Pods/ActionCableClient/Source/Classes/Error.swift": [550256577, 0]
+  "/Users/alexmain/restroPicker/frontend/restroPicker/ios/Pods/ActionCableClient/Source/Classes/JSONSerializer.swift": [550256577, 0]
+  "/Users/alexmain/restroPicker/frontend/restroPicker/ios/Pods/ActionCableClient/Source/Classes/RetryHandler.swift": [550256577, 0]

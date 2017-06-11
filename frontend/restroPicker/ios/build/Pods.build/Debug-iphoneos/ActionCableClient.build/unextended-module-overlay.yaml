@@ -1,0 +1,13 @@
+{
+  'version': 0,
+  'case-sensitive': 'false',
+  'roots': [{
+    'type': 'directory',
+    'name': '/Users/alexmain/restroPicker/frontend/restroPicker/ios/build/Debug-iphoneos/ActionCableClient/ActionCableClient.framework/Modules'
+    'contents': [{
+      'type': 'file',
+      'name': 'module.modulemap',
+      'external-contents': '/Users/alexmain/restroPicker/frontend/restroPicker/ios/build/Pods.build/Debug-iphoneos/ActionCableClient.build/unextended-module.modulemap',
+    }]
+  }]
+}
