@@ -23,7 +23,7 @@ class RankingPage extends Component {
     Object.keys(order).forEach((index) => {
       let rankingObject = {
         user_id: user_id,
-        resto_id: parseInt(order[index]),
+        rest_id: parseInt(order[index]),
         ranking: (parseInt(index) + 1)
       };
       rankingArray.push(rankingObject);
@@ -50,7 +50,7 @@ class RankingPage extends Component {
         {this.formatRankings().map(obj =>
           <CardSection>
             <Text>
-            {obj.ranking}: {restos[obj.resto_id].name}
+            {obj.ranking}: {restos[obj.rest_id].name}
             </Text>
           </CardSection>)}
       </View>
