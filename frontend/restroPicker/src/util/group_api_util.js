@@ -23,3 +23,13 @@ export const joinGroup = user => {
     )
   }).then((response) => response.json());
 };
+
+export const fetchGroup = data => {
+  return fetch(`http://localhost:3000/api/groups/${data.group_id}/users/${data.id}`, {
+    method: 'GET',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    }
+  }).then((response) => response.json());
+};

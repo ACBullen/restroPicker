@@ -1,37 +1,32 @@
 import React, { Component } from 'react';
 import { Modal, Text, TouchableHighlight, View } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 import { Button, Card, CardSection, Header, Input, Spinner } from '../common';
 
 class JoinForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loading: this.props.loading,
       username: '',
       group_code: '',
     };
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.state.loading !== nextProps.loading) {
-      return this.setState({loading: nextProps.loading});
+    if (nextProps.errors.length === 0) {
+      Actions.restoList();
     }
   }
 
   renderJoinAGroupButton() {
-    if (this.state.loading) {
-      return <Spinner size="large" />;
-    } else {
       return (
         <Button onPress={() => {this.joinAGroup()}}>
           Join
         </Button>
       );
-    }
   }
 
   joinAGroup() {
-    this.setState({ loading: true });
     const user = this.state;
     this.props.joinGroup(user);
   }

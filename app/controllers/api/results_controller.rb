@@ -1,8 +1,18 @@
 class Api::ResultsController < ApplicationController
   def show
     @group = Group.find(params[:id])
-    @restaurants = @group.restaurants.includes(:rankings)
-    render json: best_choice_algo(@restaurants)
+
+    if @group
+      if @group.results_ready == false
+        @group.results_ready = true
+        @group.save
+      end
+
+      # @restaurants = @group.restaurants.includes(:rankings)
+      # render json: best_choice_algo(@restaurants)
+      render json: ["Hurr yo results!"]
+
+    end
   end
 
   private
