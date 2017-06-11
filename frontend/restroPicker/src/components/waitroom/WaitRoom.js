@@ -30,9 +30,9 @@ class WaitRoom extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    // if(!this.end){
-      console.log("hit");
       if (!nextProps.group.results_ready) {
+        console.log("hit");
+        console.log(nextProps.currentUser.ranking_ready);
         const ds = new ListView.DataSource({
           rowHasChanged: (r1, r2) => r1 !== r2
         });
@@ -41,13 +41,12 @@ class WaitRoom extends Component {
           currentUser: nextProps.currentUser,
           users: nextProps.users,
           result: nextProps.result,
-          datasource: ds.cloneWithRows(nextProps.users),
+          dataSource: ds.cloneWithRows(nextProps.users),
         });
 
       }
-    // }
     if (nextProps.group.results_ready) {
-      Actions.end();
+      Actions.end({type: "reset"});
     }
   }
 
@@ -106,7 +105,7 @@ class WaitRoom extends Component {
     this.end = true;
     global.clearInterval(this.endcheck);
     this.fetchData();
-    setTimeout(() => Actions.end(), 1000);
+    setTimeout(() => Actions.end({type: "reset"}), 1000);
   }
 
   render() {

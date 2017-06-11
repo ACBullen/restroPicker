@@ -51,7 +51,7 @@ class RouterComponent extends React.Component {
         <Scene key="room">
           <Scene
             onRight={() =>{this.props.clearGroup();
-              Actions.entry();
+              Actions.entry({type: "reset"});
             }}
             rightTitle="Leave"
             key="waitRoom"
@@ -63,7 +63,7 @@ class RouterComponent extends React.Component {
         <Scene key="end">
           <Scene
             onRight={() => {this.props.clearGroup();
-              Actions.entry();}}
+              Actions.entry({type: "reset"});}}
             rightTitle="Leave"
             key="results"
             component={ResultContainer}
