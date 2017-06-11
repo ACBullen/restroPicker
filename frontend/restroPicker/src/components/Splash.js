@@ -24,10 +24,7 @@ class Splash extends Component {
         <Card>
           <CardSection>
             <View style={{paddingLeft: 25, paddingRight: 25, paddingTop: 30, paddingBottom: 30 }}>
-              <Image
-                style={{width: 300, height: 300}}
-                source={require('./dinner-plate.png')}
-              />
+              <Text style={{fontSize: 50, fontFamily: 'Arial', color: 'white', fontWeight: '800' }}>RestoPick</Text>
             </View>
           </CardSection>
           <CardSection>
@@ -55,3 +52,8 @@ export default connect(
   null,
   mapDispatchToProps
 )(Splash);
+
+// <Image
+//   style={{width: 300, height: 300}}
+//   source={require('./dinner-plate.png')}
+// />

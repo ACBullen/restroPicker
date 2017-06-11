@@ -11,17 +11,17 @@ class Result extends Component {
         <Header headerText={code}></Header>
         <Card>
           <Text style={styles.resultTextStyle}>
-            {this.props.result}
+            {this.props.result[0]}
           </Text>
         </Card>
         <Card>
           <Text style={styles.resultTextStyle}>
-            {this.props.result}
+            {this.props.result[1]}
           </Text>
         </Card>
         <Card>
           <Text style={styles.resultTextStyle}>
-            {this.props.result}
+            {this.props.result[2]}
           </Text>
         </Card>
       </View>
