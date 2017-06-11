@@ -56,7 +56,7 @@ class WaitRoom extends Component {
 
   renderRow(user) {
     return (
-      <View>
+      <View style={styles.rowStyle}>
         <CardSection>
           {this.renderStatus(user)}
           <Text style={styles.nameStyle}>
@@ -94,7 +94,7 @@ class WaitRoom extends Component {
 
     if (group.creator === currentUser.id) {
       return(
-        <CardSection>
+        <CardSection >
           <Button onPress={() => {this.submit();}}>
             Get Results
           </Button>
@@ -115,6 +115,7 @@ class WaitRoom extends Component {
       <View>
         <Header headerText={code}></Header>
         <ListView
+          style={styles.listStyle}
           dataSource={this.state.dataSource}
           renderRow={this.renderRow.bind(this)}
         />
@@ -127,7 +128,19 @@ class WaitRoom extends Component {
 const styles = {
   nameStyle: {
     fontSize: 18,
-    paddingLeft: 20
+    paddingLeft: 20,
+  },
+  rowStyle: {
+    marginLeft: 50,
+    marginRight: 50,
+    padding: 3,
+    backgroundColor: '#f5f5f5',
+  },
+  listStyle: {
+    paddingTop: 40,
+    paddingBottom: 35,
+    // borderBottomWidth: 0.75,
+    // borderColor: 'white',
   },
 };
 

@@ -9,7 +9,7 @@ import merge from 'lodash/merge';
 const defaultGroup = Object.freeze({
   group: {},
   currentUser: {},
-  users: {},
+  users: [],
   errors: [],
   loading: false,
   result: [],

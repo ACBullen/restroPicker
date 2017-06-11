@@ -14,7 +14,7 @@ import { clearGroup } from './actions/group_actions';
 class RouterComponent extends React.Component {
   render(){
     return (
-      <Router sceneStyle={{ paddingTop: 65 }}>
+      <Router sceneStyle={{ paddingTop: 65, backgroundColor: '#1879fd'}} navigationBarStyle={styles.navBar} titleStyle={styles.navTitle}>
         <Scene key="entry" initial>
           <Scene
             key="splash"
@@ -75,6 +75,27 @@ class RouterComponent extends React.Component {
     );
   }
 }
+
+
+
+
+const styles = {
+  navBar: {
+    // flex: 1,
+    // flexDirection: 'row',
+    // alignItems: 'center',
+    // justifyContent: 'center',
+    // backgroundColor: '#1879fd', // changing navbar color
+  },
+  navTitle: {
+    // color: 'white',
+    fontWeight: '600',
+  },
+  // routerScene: {
+  //   paddingTop: Navigator.NavigationBar.Styles.General.NavBarHeight, // some navbar padding to avoid content overlap
+  // },
+};
+
 
 const mapDispatchToProps = dispatch => ({
   clearGroup: ()=> dispatch(clearGroup())
