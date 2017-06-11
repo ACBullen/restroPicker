@@ -34,15 +34,15 @@ class Api::ResultsController < ApplicationController
   end
 
   def getPowerValues(options)
-    power-values = []
+    power_values = []
     n = options.keys.length
-    value = 1
+    value = 1.0
     while n > 0
-      powerValues.push(value)
+      power_values.push(value)
       n -= 1
-      value /= 2
+      value /= 2.0
     end
 
-    return powerValues
+    return power_values
   end
 end
