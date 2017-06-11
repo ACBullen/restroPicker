@@ -15,3 +15,7 @@ export const receiveRestos = data => ({
   type: RECEIVE_RESTOS,
   data
 });
+
+export const createRankings = rankings => dispatch => (
+  APIUtil.populateRankings(rankings)
+);

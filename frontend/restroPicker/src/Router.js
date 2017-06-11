@@ -25,6 +25,8 @@ const RouterComponent = () => {
             />
 
       <Scene
+            rightTitle="Submit"
+            onRight={() => console.log('right!!')}
             key="restoList"
             component={RestoListContainer}
             title="Ranking Time!"

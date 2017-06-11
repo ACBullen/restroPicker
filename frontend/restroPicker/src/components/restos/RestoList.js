@@ -16,7 +16,8 @@ class RestoList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: {}
+      data: {},
+      order: []
     };
   }
 
@@ -33,7 +34,7 @@ class RestoList extends Component {
   }
 
   change(nextOrder) {
-    alert(nextOrder);
+    this.setState({ order: nextOrder });
   }
 
   render() {
