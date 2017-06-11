@@ -45,6 +45,7 @@ class WaitRoom extends Component {
 
       }
     if (nextProps.group.results_ready) {
+      this.props.fetchResult(this.state.group.id);
       Actions.end({type: "reset"});
     }
   }
