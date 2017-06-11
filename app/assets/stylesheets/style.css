@@ -1,6 +1,6 @@
 /*-----------------------------------------------------------------------------------
 
-    Template Name: AppTech Landing Page Template 
+    Template Name: AppTech Landing Page Template
     Template URI: http://bootexperts.com
     Description: This is html5 template
     Author: BootExperts
@@ -8,17 +8,17 @@
     Version: 1.0
 
 -----------------------------------------------------------------------------------
-    
+
     CSS INDEX
     ===================
-	
+
     1. Theme default css
     2. Main menu
     3. Service area
     4. About area
     5. Feature area
     6. Choose area
-    7. Video area 
+    7. Video area
     8. Download area
     9. Question area
     10. Screenshot area
@@ -26,7 +26,7 @@
     12. Pricing area
     13. Counter area
     14. Newsletter area
-    15. Slider logo 
+    15. Slider logo
     16. Contact area
     17. Footer area
     18. Scrollup
@@ -287,9 +287,9 @@ i {
 .main-menu nav ul li a:hover::after {
     transform: scale(1);
 }
-.bg-img-1 {
+/*.bg-img-1 {
     background: url("img/bg-img/bg-1.jpg") no-repeat scroll center bottom / cover;
-}
+}*/
 .bg-oapcity-40 {
     position: relative;
 }
@@ -597,7 +597,7 @@ p.about-pb {
     margin-left: -30px;
 }
 /*----------------------
-	7. Video area 
+	7. Video area
 ------------------------*/
 
 .bg-img-2 {
@@ -1117,13 +1117,13 @@ span.timer {
 }
 .subscribe-form input::-webkit-input-placeholder {
     /* Chrome */
-    
+
     color: #ddd;
     opacity: 1;
 }
 .subscribe-form input::-moz-placeholder {
     /* Firefox 19+ */
-    
+
     color: #ddd;
     opacity: 1;
 }
@@ -1235,25 +1235,25 @@ input.submit:hover {
 }
 .contact-from input::-webkit-input-placeholder {
     /* Chrome */
-    
+
     color: #aaaaaa;
     opacity: 1;
 }
 .contact-from input::-moz-placeholder {
     /* Firefox 19+ */
-    
+
     color: #aaaaaa;
     opacity: 1;
 }
 .contact-from textarea::-webkit-input-placeholder {
     /* Chrome */
-    
+
     color: #aaaaaa;
     opacity: 1;
 }
 .contact-from textarea::-moz-placeholder {
     /* Firefox 19+ */
-    
+
     color: #aaaaaa;
     opacity: 1;
 }
@@ -1618,13 +1618,3 @@ input.submit:hover {
 .vbox-overlay {
   z-index: 9999999;
 }
-
-
-
-
-
-
-
-
-
-
