@@ -3,7 +3,8 @@ import {
   Text,
   Animated,
   Easing,
-  Dimensions
+  Dimensions,
+  Image
  } from 'react-native';
 
 const window = Dimensions.get('window');
@@ -39,25 +40,43 @@ class RestoItem extends Component {
       }
     }
 
-  render() {
-    const {data, active} = this.props;
+    stars(num){
+      switch (num) {
+        case 3:
+          return './stars/small_3.png';
+        case 3.5:
+          return './stars/small_3_half.png';
+        case 4:
+          return './stars/small_4.png';
+        case 4.5:
+          return './stars/small_5.png';
+        default:
+          return './stars/small_5.png';
 
-    return (
-      <Animated.View style={[
-        styles.row,
-        this._style,
-      ]}>
-        <Text style={styles.text}>{data.name}</Text>
-      </Animated.View>
-    );
+      }
+    }
+
+    render() {
+      const {data, active} = this.props;
+
+      return (
+        <Animated.View style={[
+          styles.row,
+          this._style,
+        ]}>
+          <Image source={{uri: data.image_url}} style={styles.image}/>
+          <Text style={styles.titleText}>{data.name}
+          </Text>
+        </Animated.View>
+      );
+    }
   }
-}
 
 const styles = {
   row: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#fff',
+    backgroundColor: 'rgba(0,0,0,0.1)',
     padding: 16,
     height: 80,
     flex: 1,
@@ -71,10 +90,14 @@ const styles = {
     shadowRadius: 2
   },
   image: {
-    width: 50,
-    height: 50,
+    width: 65,
+    height: 65,
     marginRight: 30,
-    borderRadius: 25,
+    borderRadius: 20,
+  },
+  titleText: {
+    fontSize: 20,
+    color: '#222222',
   }
 };
 

@@ -11,6 +11,7 @@ class NewForm extends Component {
     this.state = {
       username: '',
     };
+    this.button = true;
   }
 
   componentWillMount() {
@@ -67,8 +68,12 @@ class NewForm extends Component {
     }
 
   createNewGroup() {
+    if (this.button) {
+
     const user = this.state;
     this.props.createGroup(user);
+    this.button = false;
+    }
   }
 
 

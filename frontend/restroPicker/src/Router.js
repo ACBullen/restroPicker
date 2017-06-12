@@ -20,16 +20,19 @@ class RouterComponent extends React.Component {
             key="splash"
             component={Splash}
             title="RestoPick"
+            hideNavBar={true}
             />
           <Scene
             key="newGroupForm"
             component={NewFormContainer}
             title="Create a Group"
+            hideNavBar={false}
             />
           <Scene
             key="joinGroupForm"
             component={JoinFormContainer}
             title="Join a Group"
+            hideNavBar={false}
             />
         </Scene>
 

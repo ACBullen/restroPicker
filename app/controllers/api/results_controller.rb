@@ -9,8 +9,9 @@ class Api::ResultsController < ApplicationController
       end
 
       @restaurants = @group.restaurants.includes(:rankings)
+      debugger
       result = best_choice_algo(@restaurants)
-      p result
+      debugger
       render json: result
       # render json: ["Hurr yo results!"]
 

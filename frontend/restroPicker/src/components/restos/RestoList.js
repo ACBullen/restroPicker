@@ -72,7 +72,7 @@ const styles = {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#eee'
+    backgroundColor: '#1879fd'
   },
   list: {
     flex: 1,

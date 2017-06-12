@@ -26,5 +26,6 @@ export const receiveOrder = data => ({
 
 export const createRankings = rankings => dispatch => (
   APIUtil.populateRankings(rankings)
+  .then(() => console.log(rankings))
   .then(Actions.room({type: "reset"}))
 );
