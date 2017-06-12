@@ -1,5 +1,5 @@
 # RestoPicker
-/Link to demo/
+[Demo Site](https://resto-pick.herokuapp.com/)
 
 You're in a group, deciding on where to go to eat. Most people are polite
 about their desires and defer to the group, so the one or two people with
@@ -43,7 +43,7 @@ group and all of its associated users, restaurants, and rankings.
 
 
 ### Ranking Interface
-/ranking .gif/
+![Ranking Process](/app/assets/images/demo-ranking.gif)
 
 With the somewhat limited interface of a phone screen, the need for an
 intuitive and easy method for creating a ranked order of restaurants. We
