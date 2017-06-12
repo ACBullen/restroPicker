@@ -40,22 +40,33 @@ class RankingPage extends Component {
     const {user_id, restos, order} = this.props;
     return (
 
-      <View>
-        <CardSection>
-          <Button onPress={ () => {this.submitNewRankings();}}>
-          Submit
-          </Button>
-        </CardSection>
+      <View style={styles.viewStyle}>
         {this.formatRankings().map(obj =>
           <CardSection>
-            <Text>
+            <Text style={styles.textStyle}>
             {obj.ranking}: {restos[obj.rest_id].name}
             </Text>
           </CardSection>)}
+          <CardSection>
+            <Button onPress={ () => {this.submitNewRankings();}}>
+              Submit
+            </Button>
+          </CardSection>
       </View>
     );
   }
 }
 
+const styles = {
+  viewStyle : {
+    paddingTop: 20
+  },
+  textStyle : {
+    paddingLeft: 50,
+    color: 'white',
+    fontSize: 18
+  }
+
+};
 
 export default RankingPage;
