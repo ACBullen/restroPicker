@@ -17,7 +17,7 @@
 !/log/.keep
 !/tmp/.keep
 /node_modules/*
-/frontend/*
+/frontend/* 
 
 # Ignore Byebug command history file.
 .byebug_history
