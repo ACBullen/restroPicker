@@ -37,6 +37,11 @@ class Splash extends Component {
               Join Group
             </Button>
           </CardSection>
+          <CardSection>
+            <View style={{paddingLeft: 25, paddingRight: 25, paddingTop: 30, paddingBottom: 30 }}>
+              <Text style={{fontSize: 20, fontFamily: 'Arial', color: '#fcc05f', fontWeight: '800' }}>Choose a place to eat with minimum discord</Text>
+            </View>
+          </CardSection>
         </Card>
       </View>
     );
