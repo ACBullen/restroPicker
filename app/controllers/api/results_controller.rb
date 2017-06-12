@@ -8,9 +8,11 @@ class Api::ResultsController < ApplicationController
         @group.save
       end
 
-      # @restaurants = @group.restaurants.includes(:rankings)
-      # render json: best_choice_algo(@restaurants)
-      render json: ["Hurr yo results!"]
+      @restaurants = @group.restaurants.includes(:rankings)
+      result = best_choice_algo(@restaurants)
+      p result
+      render json: result
+      # render json: ["Hurr yo results!"]
 
     end
   end
@@ -23,9 +25,10 @@ class Api::ResultsController < ApplicationController
     restaurants.each do |rest|
       rest_options[rest.id] = []
       rest.rankings.each do |ranking|
-        rest_options[rest.id] << ranking.rank
+        rest_options[rest.id] << ranking.ranking
       end
     end
+    # debugger
     values = getPowerValues(rest_options)
     rankTotals = {}
 
@@ -40,7 +43,7 @@ class Api::ResultsController < ApplicationController
       end
       rankTotals[key] = total
     end
-    return rankTotals.to_a.sort{|a,b| b[1] <=> a[1]}.map{|a| a[0]}[0..2]
+    return rankTotals.to_a.sort {|a,b| b[1] <=> a[1]}.map{|a| a[0]}[0..2]
   end
 
   def getPowerValues(options)
