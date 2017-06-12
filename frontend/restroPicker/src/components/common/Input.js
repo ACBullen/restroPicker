@@ -37,12 +37,12 @@ const styles = {
     flex: 1,
   },
   containerStyle: {
-    height: 80,
+    height: 60,
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
-    borderBottomWidth: 0.75,
-    borderColor: 'white',
+    borderBottomWidth: 2.0,
+    borderColor: 'yellow',
 
   }
 };
