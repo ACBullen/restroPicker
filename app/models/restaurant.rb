@@ -10,6 +10,8 @@
 #  address    :string           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  image_url  :string
+#  categories :text
 #
 # Indexes
 #
@@ -17,4 +19,10 @@
 #
 
 class Restaurant < ApplicationRecord
+  has_many :rankings,
+    primary_key: :id,
+    foreign_key: :rest_id,
+    class_name: :Ranking
+    
+  belongs_to :group
 end

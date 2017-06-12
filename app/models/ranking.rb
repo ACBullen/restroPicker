@@ -16,4 +16,10 @@
 #
 
 class Ranking < ApplicationRecord
+  belongs_to :restaurant,
+    primary_key: :id,
+    foreign_key: :rest_id,
+    class_name: :Restaurant
+
+  belongs_to :user
 end

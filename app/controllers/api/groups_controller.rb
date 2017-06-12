@@ -1,8 +1,4 @@
 class Api::GroupsController < ApplicationController
-  def show
-    @group = Group.find(params[:id])
-    render :show
-  end
 
   def create
     @user = User.new(username: params[:username])
@@ -11,7 +7,7 @@ class Api::GroupsController < ApplicationController
       @group = @user.create_group
       render :show
     else
-      render json: "something went wrong", status: 422
+      render json: "Something went wrong!", status: 422
     end
   end
 
@@ -24,6 +20,6 @@ class Api::GroupsController < ApplicationController
   private
 
   def group_attributes
-    params.require(:group).permit(:phase)
+    params.require(:group).permit(:results_ready)
   end
 end
