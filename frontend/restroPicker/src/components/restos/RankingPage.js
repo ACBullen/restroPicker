@@ -11,7 +11,6 @@ class RankingPage extends Component {
   }
 
   componentWillMount() {
-    console.log(this.props);
     if (this.state.order !== this.props.order)
       return this.setState({order: this.props.order});
   }

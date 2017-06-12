@@ -10,6 +10,7 @@ import { values } from 'lodash';
 import RestoItem from './RestoItem';
 import { Button } from '../common';
 import SortableList from 'react-native-sortable-list';
+import { Header } from '../common/Header';
 
 const window = Dimensions.get('window');
 
@@ -46,16 +47,16 @@ class RestoList extends Component {
       order[i] = rest_ids[i];
       i += 1;
     }
-    console.log(order);
     return order;
   }
 
 
   render() {
+    const code = "Group Code: " + this.props.group.group_code;
     this.props.receiveOrder(this.createOrder(this.state.data));
     return (
       <View style = {styles.container}>
-        <Text style={styles.title}>Group Code: {this.props.group.group_code}</Text>
+        <Header headerText={code}></Header>
         <SortableList
           style={styles.list}
           contentContainerStyle={styles.contentContainer}
@@ -72,7 +73,7 @@ const styles = {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#eee'
+    backgroundColor: '#1879fd'
   },
   list: {
     flex: 1,

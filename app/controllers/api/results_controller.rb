@@ -10,7 +10,6 @@ class Api::ResultsController < ApplicationController
 
       @restaurants = @group.restaurants.includes(:rankings)
       result = best_choice_algo(@restaurants)
-      p result
       render json: result
       # render json: ["Hurr yo results!"]
 
@@ -28,7 +27,6 @@ class Api::ResultsController < ApplicationController
         rest_options[rest.id] << ranking.ranking
       end
     end
-    # debugger
     values = getPowerValues(rest_options)
     rankTotals = {}
 
