@@ -7,7 +7,7 @@ class Api::GroupsController < ApplicationController
       @group = @user.create_group
       render :show
     else
-      render json: "Something went wrong!", status: 422
+      render json: ["Error!"], status: 422
     end
   end
 

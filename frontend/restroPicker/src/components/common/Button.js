@@ -5,7 +5,7 @@ const Button = ({ onPress, children }) => {
   const { buttonStyle, textStyle } = styles;
 
   return (
-    <TouchableHighlight onPress={onPress} style={buttonStyle} underlayColor={'#c0c0c0'}>
+    <TouchableHighlight onPress={onPress} style={buttonStyle} underlayColor={'#fcc05f'}>
       <Text style={textStyle}>
         {children}
       </Text>

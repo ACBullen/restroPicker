@@ -6,6 +6,7 @@ const mapStateToProps = (state) => {
   return ({
     group: state.group.group,
     result: state.group.result,
+    restos: state.restos,
   });
 };
 

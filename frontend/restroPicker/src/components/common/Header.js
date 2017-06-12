@@ -23,8 +23,9 @@ const styles = {
     // shadowColor: 'white',
     // shadowOffset: { width: 0, height: 2 },
     // shadowOpacity: 0.2,
-    borderBottomWidth: 0.75,
-    borderColor: 'white',
+    borderBottomWidth: 2.0,
+    // borderColor: '#ffc654',
+    borderColor: 'yellow',
     elevation: 2,
     position: 'relative'
 
