@@ -1,5 +1,5 @@
   export const createGroup = user => {
-  return fetch('http://localhost:3000/api/groups', {
+  return fetch('https://resto-pick.herokuapp.com/api/groups', {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
@@ -12,7 +12,7 @@
 };
 
 export const joinGroup = user => {
-  return fetch('http://localhost:3000/api/users', {
+  return fetch('https://resto-pick.herokuapp.com/api/users', {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
@@ -25,7 +25,7 @@ export const joinGroup = user => {
 };
 
 export const fetchGroup = data => {
-  return fetch(`http://localhost:3000/api/groups/${data.group_id}/users/${data.id}`, {
+  return fetch(`https://resto-pick.herokuapp.com/api/groups/${data.group_id}/users/${data.id}`, {
     method: 'GET',
     headers: {
       'Accept': 'application/json',
