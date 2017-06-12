@@ -14,7 +14,9 @@ _____
 
 This app is constructed using the React-Native framework, allowing for
 a primarily JavaScript coded application to be integrated with the native
-code of iOS and Android. /expound and elaborate/
+code of iOS and Android. It is built off the react-redux pattern of
+unidirectional data flow from a shared store to the individual components,
+keeping the app in line with itself as it runs.
 
 ### Yelp Query
 
@@ -44,8 +46,10 @@ group and all of its associated users, restaurants, and rankings.
 /ranking .gif/
 
 With the somewhat limited interface of a phone screen, the need for an
-intuitive and easy method for creating a ranked order of restaurants
-without typing or 
+intuitive and easy method for creating a ranked order of restaurants. We
+decided to use the react-native-sortable-list package to create a drag-and-drop
+list whose order is translated into an array of rankings which can be saved
+in the database.
 
 ### Weighted Choice Algorithm
 
@@ -54,7 +58,8 @@ runs our weighted choice algorithm on the server side, using a route for
 that purpose to gathering the groups rankings and evaluating the top
 choices for the group. The algorithm itself weights the ranks according
 to an exponentially decreasing level of power, ie. the restaurant a user
-has ranked first is worth 1 point, second is worth 1/2 point, third is worth 1/4, etc.
+has ranked first is worth 1 point, second is worth 1/2 point, third is
+worth 1/4, etc.
 ```Ruby
 def best_choice_algo(restaurants)
 
