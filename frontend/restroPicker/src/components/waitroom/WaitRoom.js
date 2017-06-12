@@ -30,8 +30,6 @@ class WaitRoom extends Component {
 
   componentWillReceiveProps(nextProps) {
       if (!nextProps.group.results_ready) {
-        console.log("hit");
-        console.log(nextProps.currentUser.ranking_ready);
         const ds = new ListView.DataSource({
           rowHasChanged: (r1, r2) => r1 !== r2
         });

@@ -46,7 +46,6 @@ class RestoList extends Component {
       order[i] = rest_ids[i];
       i += 1;
     }
-    console.log(order);
     return order;
   }
 
