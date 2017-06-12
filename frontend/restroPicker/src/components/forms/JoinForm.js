@@ -43,7 +43,7 @@ class JoinForm extends Component {
 
   render () {
     return (
-         <View style={{marginTop: 22}}>
+         <View style={{marginTop: 100}}>
           <View>
             <Card>
               <CardSection>
@@ -80,9 +80,10 @@ class JoinForm extends Component {
 
 const styles = {
   errorTextStyle: {
-    fontSize: 20,
+    fontSize: 16,
     alignSelf: 'center',
-    color: 'red'
+    color: '#b21e1e',
+    fontWeight: '400',
   }
 };
 

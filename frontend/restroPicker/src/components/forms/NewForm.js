@@ -74,7 +74,7 @@ class NewForm extends Component {
 
   render () {
     return (
-          <View style={{marginTop: 22}}>
+          <View style={{marginTop: 130}}>
             <View>
               <Card>
 
@@ -86,6 +86,9 @@ class NewForm extends Component {
                     onChangeText={text => this.setState({ username: text })}
                   />
                 </CardSection>
+
+                <Text style={styles.errorTextStyle}>
+                </Text>
 
                 <CardSection>
                   {this.renderCreateNewGroupButton()}
@@ -103,8 +106,9 @@ const styles = {
   errorTextStyle: {
     fontSize: 20,
     alignSelf: 'center',
-    color: 'red'
-  }
+    color: '#b21e1e',
+    fontWeight: '400',
+  },
 };
 
 export default NewForm;

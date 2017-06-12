@@ -30,8 +30,6 @@ class WaitRoom extends Component {
 
   componentWillReceiveProps(nextProps) {
       if (!nextProps.group.results_ready) {
-        console.log("hit");
-        console.log(nextProps.currentUser.ranking_ready);
         const ds = new ListView.DataSource({
           rowHasChanged: (r1, r2) => r1 !== r2
         });
@@ -74,7 +72,7 @@ class WaitRoom extends Component {
         <View style={{paddingLeft: 20}}>
           <Image
             style={{width: 20, height: 20}}
-            source={require('./greenlight.png')}
+            source={require('./greenlight2.png')}
           />
         </View>
       );
@@ -83,7 +81,7 @@ class WaitRoom extends Component {
         <View style={{paddingLeft: 20}}>
           <Image
             style={{width: 20, height: 20}}
-            source={require('./nolight.png')}
+            source={require('./nolight2.png')}
           />
         </View>
       );
@@ -130,12 +128,13 @@ const styles = {
   nameStyle: {
     fontSize: 18,
     paddingLeft: 20,
+    color: 'white',
   },
   rowStyle: {
     marginLeft: 50,
     marginRight: 50,
     padding: 3,
-    backgroundColor: '#f5f5f5',
+    // backgroundColor: 'rgba(245, 245, 245, 0.2)',
   },
   listStyle: {
     paddingTop: 40,
