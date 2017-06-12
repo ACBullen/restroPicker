@@ -11,7 +11,7 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  image_url  :string
-#  categories :text
+#  categories :string
 #
 # Indexes
 #
