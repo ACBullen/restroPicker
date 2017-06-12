@@ -46,6 +46,11 @@ class Result extends Component {
       <View>
         <Header headerText={code}></Header>
         <Card>
+          <Text style={{color: 'white', marginBottom: 10, alignSelf: 'center'}}>Powered by
+
+            <Image style={{width: 50, height: 32, marginTop: 10}} source={require('../restos/Yelp_trademark_RGB.png')}/>
+
+          </Text>
           <Text style={styles.congratsTextStyle}>
             CONGRATULATIONS!
           </Text>

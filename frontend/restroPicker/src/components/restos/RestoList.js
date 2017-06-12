@@ -57,6 +57,11 @@ class RestoList extends Component {
     return (
       <View style = {styles.container}>
         <Header headerText={code}></Header>
+        <Text style={{color: 'white', marginBottom: 10}}>Powered by
+
+          <Image style={{width: 50, height: 32, marginTop: 10}} source={require('./Yelp_trademark_RGB.png')}/>
+
+        </Text>
         <SortableList
           style={styles.list}
           contentContainerStyle={styles.contentContainer}

@@ -5,7 +5,11 @@ import {
   Easing,
   Dimensions,
   Image,
-  View
+  View,
+  Linking,
+  TouchableHighlight
+
+
  } from 'react-native';
 
 const window = Dimensions.get('window');
@@ -77,21 +81,21 @@ class RestoItem extends Component {
 
       return (
         <Animated.View style={[
-          styles.row,
-          this._style,
-        ]}>
-        <Image source={{uri: data.image_url}} style={styles.image}/>
+              styles.row,
+              this._style,
+            ]}>
+          <TouchableHighlight underlayColor={'#1259ba'} onPress={()=> Linking.openURL(data.yelp_url)}>
+            <Image source={{uri: data.image_url}} style={styles.image}/>
+          </TouchableHighlight>
 
-        <View style={styles.column1}>
-          <Text style={styles.titleText}>{data.name}</Text>
-          <Text>{this.renderStars(data.rating)}</Text>
-          <Text style={styles.categoryText}>
-            {this.renderCategories(data.categories)}
-          </Text>
-        </View>
-
-
-        </Animated.View>
+          <View style={styles.column1}>
+            <Text style={styles.titleText}>{data.name}</Text>
+            <Text>{this.renderStars(data.rating)}</Text>
+            <Text style={styles.categoryText}>
+              {this.renderCategories(data.categories)}
+            </Text>
+          </View>
+      </Animated.View>
       );
     }
   }
