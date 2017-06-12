@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     resources :groups, only: [:create, :update, :show] do
       resources :users, only: [:show]
     end
-    resources :restaurants, only: [:create]
+    resources :restaurants, only: [:create, :index]
     resources :rankings, only: [:create]
     resources :results, only: [:show]
   end

@@ -16,6 +16,15 @@ class JoinForm extends Component {
     if (nextProps.errors.length === 0) {
       Actions.restoList();
     }
+    if (nextProps.group) {
+      switch (nextProps.group.results_ready) {
+        case true:
+          Actions.room();
+          break;
+        default:
+        Actions.rank();
+      }
+    }
   }
 
   renderJoinAGroupButton() {
@@ -47,7 +56,7 @@ class JoinForm extends Component {
               </CardSection>
               <CardSection>
                 <Input
-                  placeholder="What's your group code?"
+                  placeholder="Group code?"
                   label="Code"
                   value={this.state.group_code}
                   onChangeText={text => this.setState({ group_code: text })}

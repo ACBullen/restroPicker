@@ -38,7 +38,7 @@ class NewForm extends Component {
       let restos = nextProps.restos;
       let restaurants = this.formatRestos(group_id, values(restos));
       this.props.createRestos(restaurants);
-      Actions.restoList();
+      Actions.rank();
     }
 
   }
@@ -80,7 +80,7 @@ class NewForm extends Component {
 
                 <CardSection>
                   <Input
-                    placeholder="What's your name"
+                    placeholder="What's your name?"
                     label="Name"
                     value={this.state.username}
                     onChangeText={text => this.setState({ username: text })}

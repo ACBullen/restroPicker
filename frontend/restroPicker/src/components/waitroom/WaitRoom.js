@@ -17,14 +17,21 @@ class WaitRoom extends Component {
       result: this.props.result,
       dataSource: ds.cloneWithRows(this.props.users),
     };
-    this.end = false;
     this.endcheck = global.setInterval(this.fetchData.bind(this), 1000);
   }
 
+  fetchData() {
+    const data = ({
+      group_id: this.state.group.id,
+      id: this.state.currentUser.id,
+    });
+    this.props.fetchGroup(data);
+  }
+
   componentWillReceiveProps(nextProps) {
-    if(!this.end){
-      console.log("hit");
       if (!nextProps.group.results_ready) {
+        console.log("hit");
+        console.log(nextProps.currentUser.ranking_ready);
         const ds = new ListView.DataSource({
           rowHasChanged: (r1, r2) => r1 !== r2
         });
@@ -33,20 +40,24 @@ class WaitRoom extends Component {
           currentUser: nextProps.currentUser,
           users: nextProps.users,
           result: nextProps.result,
-          datasource: ds.cloneWithRows(nextProps.users),
+          dataSource: ds.cloneWithRows(nextProps.users),
         });
 
       }
-    }
     if (nextProps.group.results_ready) {
-      Actions.end();
+      this.props.fetchResult(this.state.group.id);
+      Actions.end({type: "reset"});
     }
+  }
+
+  componentWillUnmount() {
+    global.clearInterval(this.endcheck);
   }
 
 
   renderRow(user) {
     return (
-      <View>
+      <View style={styles.rowStyle}>
         <CardSection>
           {this.renderStatus(user)}
           <Text style={styles.nameStyle}>
@@ -84,7 +95,7 @@ class WaitRoom extends Component {
 
     if (group.creator === currentUser.id) {
       return(
-        <CardSection>
+        <CardSection >
           <Button onPress={() => {this.submit();}}>
             Get Results
           </Button>
@@ -95,10 +106,8 @@ class WaitRoom extends Component {
 
   submit() {
     this.props.fetchResult(this.state.group.id);
-    this.end = true;
-    global.clearInterval(this.endcheck);
     this.fetchData();
-    setTimeout(() => Actions.end(), 1000);
+    setTimeout(() => Actions.end({type: "reset"}), 1000);
   }
 
   render() {
@@ -107,6 +116,7 @@ class WaitRoom extends Component {
       <View>
         <Header headerText={code}></Header>
         <ListView
+          style={styles.listStyle}
           dataSource={this.state.dataSource}
           renderRow={this.renderRow.bind(this)}
         />
@@ -119,7 +129,19 @@ class WaitRoom extends Component {
 const styles = {
   nameStyle: {
     fontSize: 18,
-    paddingLeft: 20
+    paddingLeft: 20,
+  },
+  rowStyle: {
+    marginLeft: 50,
+    marginRight: 50,
+    padding: 3,
+    backgroundColor: '#f5f5f5',
+  },
+  listStyle: {
+    paddingTop: 40,
+    paddingBottom: 35,
+    // borderBottomWidth: 0.75,
+    // borderColor: 'white',
   },
 };
 
