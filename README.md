@@ -1,117 +1,140 @@
-# RestoPick
+# RestoPicker
+[Demo Site](https://resto-pick.herokuapp.com/)
 
-### RestoPick is a project which helps indecisive groups of friends decide where to eat.
+You're in a group, deciding on where to go to eat. Most people are polite
+about their desires and defer to the group, so the one or two people with
+the most outspoken opinions control the direction of the group. All well
+and good for them, but perhaps those who defer would have been happier
+elsewhere? How to make a choice without an extended debate while remaining polite? Enter RestoPicker. This iOS app leverages the Yelp api and a weighted choice algorithm to arrive at a choice of maximum happiness amongst local options for your group of friends or coworkers with a minimum of fuss.
+_____
 
-## Background and Overview
+## Technology
 
-Picking restaurants in a group is hard, particularly if the majority of the group is attempting to be polite.  We intend to solve this problem by giving group members the option to assign rank values to nearby restaurants.  
+### React-Native
 
-Our approach:
+This app is constructed using the React-Native framework, allowing for
+a primarily JavaScript coded application to be integrated with the native
+code of iOS and Android. It is built off the react-redux pattern of
+unidirectional data flow from a shared store to the individual components,
+keeping the app in line with itself as it runs.
 
-  * Query the Yelp API to find types of restaurants in the area near the group
-  * Allow one member of the group to create a 'room' to which other members can subscribe
-  * Offer a list of restaurants (based on location of group creator) for group members to rank
-  * Apply a ranking algorithm to determine the best choice for the group
+### Yelp Query
 
-## Functionality and MVP
+The Yelp api is queried at the formation of the group, using the location
+of the group creator to create entries in the database for local restaurants
+currently open and nearby. This allows the other members of the group to
+see the same list, even if they are not yet in the same area as the rest
+of the group.
 
-  - [ ] Get potential restaurants from Yelp based on location (using GraphQL)
-  - [ ] Create a 'room' to which users can subscribe (using Websockets)
-  - [ ] Take in a user choices and dynamically update the group (Websockets)
-  - [ ] Return top 3 restaurants based on algorithm results
-  - [ ] Delete group and dependancies after a set period of time
-  - [ ] Be available as a mobile app, but feature a web demo page featuring emulator
-  - [ ] Be adequately styled
+## Features and Implementation
 
-#### Bonus Features
+### Groups and Non-Persistence
 
- - [ ] Allow users to input a search location as opposed to using the actual location of the group creator
- - [ ] Allow creator to send group code via SMS invite to other group members
- - [ ] Display a Google Map on the results/rankings pages
- - [ ] Display directions to first restaurant on the results page
+Given the pop-up nature of groups, ie. the individuals needing to make
+a decision together vary based on situation and location, we decided to
+make the system using non-persistent users and groups. This reduces the
+data that the system needs to store, and removes the necessity for users
+to authenticate themselves. When created, a group is assigned a
+six-character alphanumeric code generated with SecureRandom, which other
+users can then use to join in the session and link up with other users.
+24 hours after group creation (and well after any user might need to
+refer to the results of a group), a job runs on the server to destroy the
+group and all of its associated users, restaurants, and rankings.
 
 
-## Technologies
+### Ranking Interface
+![Ranking Process](/app/assets/images/demo-ranking.gif)
 
-##### Backend: Ruby/Rails/ActionCable(?)/Yelp GraphQL
-##### Frontend: React Native/Redux
+With the somewhat limited interface of a phone screen, the need for an
+intuitive and easy method for creating a ranked order of restaurants. We
+decided to use the react-native-sortable-list package to create a drag-and-drop
+list whose order is translated into an array of rankings which can be saved
+in the database.
 
-#### Establishing the appropriate connection with Websockets
+### Weighted Choice Algorithm
 
-In order to ensure the smooth operation of the group experience, the app will use (possibly) ActiveCable to connect the users via websockets. At each stage of the choosing process, data from the users will be collected and their status dynamically updated via their connection to the server, keeping each of their stores in alignment and ensuring that all will get access to the right forms at the right time and the same end result once all of the choices have been made and the sorting algorithm has been run.
+In order to save on the resources needed on the phone, the application
+runs our weighted choice algorithm on the server side, using a route for
+that purpose to gathering the groups rankings and evaluating the top
+choices for the group. The algorithm itself weights the ranks according
+to an exponentially decreasing level of power, ie. the restaurant a user
+has ranked first is worth 1 point, second is worth 1/2 point, third is
+worth 1/4, etc.
+```Ruby
+def best_choice_algo(restaurants)
 
-#### Querying the Yelp API
+  rest_options = {}
+  restaurants.each do |rest|
+    rest_options[rest.id] = []
+    rest.rankings.each do |ranking|
+      rest_options[rest.id] << ranking.rank
+    end
+  end
+  values = getPowerValues(rest_options)
+  rankTotals = {}
 
-Querying the Yelp API will be carried out using the new GraphQL version of the Yelp API. This will allow us to search for restaurants based on the location of the group leader, while returning in the query only the data we want about each restaurant at each stage of the app.
-
-```JavaScript
-
-"data": {
-  "search": {
-    "total": 134,
-    "business": [
-      {
-        "name": "Rambler",
-        "rating": 4,
-        "review_count": 154,
-        "categories": [
-          {
-            "title": "American (New)",
-            "alias": "newamerican"
-          }
-        ]
-      },
-    }
-  }
+  rest_options.each do |key, val|
+    n = val.length
+    total = 0
+    while n > 0
+      rank_to_be_added = val[n - 1]
+      value_to_be_added = values[rank_to_be_added - 1]
+      total += value_to_be_added
+      n -= 1
+    end
+    rankTotals[key] = total
+  end
+  return rankTotals.to_a.sort {|a,b| b[1] <=> a[1]}.map{|a| a[0]}[0..2]
+end
 ```
+(note: getPowerValues returns the values each rank should have in order,
+  which ensures correct ranking even if the number of restaurants varies
+  for one reason or another)
 
-#### Ranking algorithm
+This ensures that first choices have overwhelming weight when compared to
+other choices, and that low choices will largely serve as tie-breakers.
 
-After having offered the users a list of restaurants matching their price and cuisine preferences and allowed them to rank those restaurants, the algorithm will assign a power value to each rank number (eg 1 = 1, 2 = 0.5, 3 = .25, etc.) in order to compute a total group preference score for each restaurant. This allow the program to suggest the top 3 choices based on the group members' rankings.
+### HTTP Polling
 
-#### UX
+Keeping the group in sync such that the group leader knows when the group
+members have submitted their rankings and the server has acknowledged
+their receipt is key to ensuring the smooth operation of the app. To
+provide this functionality, the app uses interval polling of the server
+to check if users have submitted their information as yet, and then, once
+the creator submits and the results are calculated, to take them to the results page (and then stop requesting information).
+____
+## Future Features and Improvements
 
-##### Frontend
+#### WebSockets
 
-The app will connect users to a group (using a live websocket connection). React components will render based on group phase, offering the correct forms at the correct time. The group creator will have control over the flow of the phases via a button that will execute the sending of information to the back-end, possibly short-circuiting group members who have not submitted their responses. This will allow the group creator to keep the process going even in the event of a user disconnect or loss of coverage.
+HTTP polling, while reasonably reliable to keep the group informed as to
+who has submitted their rankings and who is still considering, is not
+the most efficient way of synchronizing the app state. WebSockets would
+allow for a lower number of database queries and more immediate feedback
+on the state of the group.
 
-##### Backend
+#### Input Location
 
-The app's backend will be responsible for maintaining the connection between users, as well as querying the Yelp API and its own databases to serve the correct data to the user for the given stage of the group.
+Rather than only going off the current location of whoever creates the
+group, it would be an added level of convenience for the group creator to
+be able to choose a location for the center of the search area.
 
-## Accomplished over the Weekend
+#### Yelp GraphQL Querying
 
- - Studied GraphQL and Websockets
- - Researched Yelp API and how to retrieve the data we need at different phases of the UX
- - Completed DB schema, wireframes, API endpoints
- - DB set up according to schema and models have started to be filled out
- - wrote the sorting algorithm and GraphQL queries
- - learned how to create a working chatroom using ActionCable that can be adapted to our information serving purposes
- - test version of the user and group controllers made
+GraphQL allows the querier to request more specific data from the API
+than a simple GET request to a route. This allows for fetching only what
+information is needed for the query and would also potentially allow for
+additional filtering.
 
+#### Additional Filters Stage
 
-## Group Members Work Breakdown
+In order to improve the overall favorability of the result, it would be
+beneficial to allow a similar ranking stage for cuisine and potentially
+price, rather than only going off of relative location.
 
-#### Alex Scott, Alex Bullen, Alissara Rojanapairat
+#### Android and Web App Versions
 
-### Day 1 to Day 2
-Alex B: DB reorganization and research mobile websockets
-Alex S: Finish Yelp API research and start React Native tutorial
-Alissara: React Native and research websockets as they relate to frontend
-
-### Day 3 to Day 4
-Alex S: Start React components for splash page, username/join pop-ups and initial room
-Alex B: Build out reducers and actions and waiting rooms, plus API controllers
-Alissara: Start React components for waiting room and result page
-
-### Day 4
-all three: Implementation cleanup and incorporation of backend sort algorithm
-
-### Day 5
-All: bugfixing
-Alex S: Styling splash and logo
-Alex B: Styling on waiting rooms and results
-Alissara: Styling forms
-
-### Weekend
-Functionality testing, yelp compliance assurance, bugfixing, emulator page, additional styling, and production README
+Expanding to Android increases the availability of the product,
+as would a browser-based version, and with the function largely platform
+agnostic, it would not require too much additional logic to be able to
+share sessions across devices.
