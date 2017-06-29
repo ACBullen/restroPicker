@@ -25,7 +25,7 @@ class RestoList extends Component {
 
   componentWillMount() {
     let group_id = this.props.group.id;
-    setTimeout(() =>    axios.get(`http://localhost:3000/api/restaurants?group=${group_id}`)
+    setTimeout(() =>    axios.get(`https://resto-pick.herokuapp.com/api/restaurants?group=${group_id}`)
       .then(response => {
         this.setState({ data: response.data.restaurants });
         this.props.receiveRestos(this.state.data);

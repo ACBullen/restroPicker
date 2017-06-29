@@ -1,5 +1,5 @@
 export const populateRestos = restaurants => {
-  return fetch('http://localhost:3000/api/restaurants', {
+  return fetch('https://resto-pick.herokuapp.com/api/restaurants', {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
@@ -12,7 +12,7 @@ export const populateRestos = restaurants => {
 };
 
 export const populateRankings = rankings =>{
-  return fetch('http://localhost:3000/api/rankings', {
+  return fetch('https://resto-pick.herokuapp.com/api/rankings', {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
