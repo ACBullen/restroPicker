@@ -26,7 +26,7 @@ class NewForm extends Component {
         term: "restaurants",
         latitude: lat,
         longitude: lng,
-        radius: 1000,
+        open_now: true,
         limit: 10,
         sort_by: "distance"
       }
