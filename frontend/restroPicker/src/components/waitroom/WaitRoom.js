@@ -29,6 +29,7 @@ class WaitRoom extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    console.log(nextProps.group.results_ready)
       if (!nextProps.group.results_ready) {
         const ds = new ListView.DataSource({
           rowHasChanged: (r1, r2) => r1 !== r2
@@ -43,8 +44,10 @@ class WaitRoom extends Component {
 
       }
     if (nextProps.group.results_ready) {
+      console.log("ready!")
       this.props.fetchResult(this.state.group.id);
-      Actions.end({type: "reset"});
+      this.fetchData();
+      setTimeout(() => Actions.end({type: "reset"}), 500);
     }
   }
 

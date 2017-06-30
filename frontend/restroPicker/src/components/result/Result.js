@@ -64,27 +64,31 @@ class Result extends Component {
             <View style={styles.column1} underlayColor={'#1259ba'} >
               <Text style={styles.titleText}>{restos[first].name}</Text>
               <Text>{this.renderStars(restos[first].rating)}</Text>
+              <Text style={styles.categoryText}>{restos[first].address}</Text>
               <Text style={styles.categoryText}>
                 {this.renderCategories(restos[first].categories)}
               </Text>
             </View>
           </View>
         </TouchableHighlight>
-
         <Card>
-          <TouchableHighlight underlayColor={'#1259ba'} onPress={()=> Linking.openURL(restos[second].yelp_url)}>
-            <Text style={styles.resultTextStyle}>
-              Plan B: {restos[second].name}
-            </Text>
-          </TouchableHighlight>
-        </Card>
+          <Card>
+            <TouchableHighlight underlayColor={'#1259ba'} onPress={()=> Linking.openURL(restos[second].yelp_url)}>
+                <Text style={styles.resultTextStyle}>
+                  Plan B: {restos[second].name}
+                  <Text style={styles.categoryText}>{"\n"}{restos[second].address}</Text>
+                </Text>
+            </TouchableHighlight>
+          </Card>
 
-        <Card>
-          <TouchableHighlight underlayColor={'#1259ba'} onPress={()=> Linking.openURL(restos[third].yelp_url)}>
-            <Text style={styles.resultTextStyle}>
-              Plan C: {restos[third].name}
-            </Text>
-          </TouchableHighlight>
+          <Card>
+            <TouchableHighlight underlayColor={'#1259ba'} onPress={()=> Linking.openURL(restos[third].yelp_url)}>
+              <Text style={styles.resultTextStyle}>
+                Plan C: {restos[third].name}
+                <Text style={styles.categoryText}>{"\n"}{restos[third].address}</Text>
+              </Text>
+            </TouchableHighlight>
+          </Card>
         </Card>
       </View>
     );
@@ -112,9 +116,11 @@ const styles = {
   },
   resultTextStyle: {
     fontSize: 20,
-    alignSelf: 'center',
+    paddingLeft: 20,
+    alignSelf: 'flex-start',
     color: 'white',
   },
+
   row: {
     flexDirection: 'row',
     alignItems: 'center',

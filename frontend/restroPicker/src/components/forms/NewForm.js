@@ -50,7 +50,7 @@ class NewForm extends Component {
        name: resto.name,
        rating: resto.rating,
        yelp_url: resto.url,
-       address: resto.location.display_address[0],
+       address: resto.address || resto.location.display_address[0],
        image_url: resto.image_url,
        categories: resto.categories.map((category) => category.title).join(", ")
      })
