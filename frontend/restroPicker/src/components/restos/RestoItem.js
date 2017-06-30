@@ -117,24 +117,29 @@ const styles = {
     shadowOffset: {height: 2, width: 2},
     shadowRadius: 2
   },
+
   image: {
     width: 65,
     height: 65,
     marginRight: 15,
     borderRadius: 20,
   },
+
   column1: {
     flexDirection: 'column'
   },
+
   column2: {
     paddingLeft: 20
   },
 
   titleText: {
-    fontSize: 20,
+    fontSize: 18,
     marginBottom: 10,
     color: 'white',
+    width: window.width - 200
   },
+
   categoryText: {
     fontSize: 10,
     color: 'white',
