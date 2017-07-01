@@ -52,7 +52,7 @@ class Splash extends Component {
 
 const styles = {
   titleStyle: {
-    fontSize: 50,
+    fontSize: 60,
     fontFamily: 'Arial',
     color: 'white',
     fontWeight: '800',
@@ -82,8 +82,8 @@ const styles = {
     fontWeight: '800',
     backgroundColor: 'rgba(0,0,0,0)',
     shadowColor: 'black',
-    shadowOffset: { width: 1, height: 2 },
-    shadowOpacity: 0.5,
+    shadowOffset: { width: 1, height: 1 },
+    shadowOpacity: .9,
     shadowRadius: 1,
   }
 };
