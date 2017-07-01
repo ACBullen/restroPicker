@@ -46,6 +46,7 @@ class RouterComponent extends React.Component {
               component={RestoListContainer}
               />
           <Scene
+              sceneStyle={styles.rankingStyle}
               title="Confirm Rankings"
               key="rankingPage"
               component={RankingPageContainer}
@@ -91,7 +92,12 @@ const styles = {
   splashStyle: {
     paddingTop: 0
   },
-  
+
+  rankingStyle: {
+    paddingTop: 60,
+    backgroundColor: 'rgba(0,0,0,0)'
+  },
+
   navBar: {
     // flex: 1,
     // flexDirection: 'row',
