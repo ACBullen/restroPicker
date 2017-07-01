@@ -66,8 +66,8 @@ const styles = {
   textStyle : {
     paddingLeft: 50,
     color: 'white',
-    fontSize: 22,
-    backgroundColor: 'rgba(0,0,0,0)',
+    fontSize: 23,
+    fontWeight: "500",
     shadowColor: 'black',
     shadowOffset: { width: 1.5, height: 1.5 },
     shadowOpacity: 1,
