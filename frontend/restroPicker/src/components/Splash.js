@@ -20,7 +20,7 @@ class Splash extends Component {
 
   render () {
     return (
-      <Image source={{uri: 'https://asideofsweet.com/wp-content/uploads/2016/09/San-Francisco-Profressional-Photographer-Best-Food-Photos-Restaurants-5768.jpg'}} style={styles.backgroundImage}>
+      <Image source={require('./background.png')} style={styles.backgroundImage}>
         <View>
           <Card>
             <CardSection>
@@ -66,7 +66,8 @@ const styles = {
   backgroundImage : {
     flex: 1,
     // opacity: 0.6,
-    resizeMode: 'cover'
+    alignSelf: 'stretch',
+    width: null
   },
   viewStyle: {
     paddingLeft: 25,
