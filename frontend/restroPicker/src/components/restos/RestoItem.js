@@ -85,7 +85,7 @@ class RestoItem extends Component {
               this._style,
             ]}>
 
-          <TouchableHighlight underlayColor={'#956743'} onPress={()=> Linking.openURL(data.yelp_url)}>
+          <TouchableHighlight underlayColor={'#fcc05f'} onPress={()=> Linking.openURL(data.yelp_url)}>
             <Image source={{uri: data.image_url}} style={styles.image}/>
           </TouchableHighlight>
 
