@@ -70,8 +70,8 @@ const styles = {
     fontWeight: "500",
     backgroundColor: 'rgba(0,0,0,0)',
     shadowColor: 'black',
-    shadowOffset: { width: 1.5, height: 1.5 },
-    shadowOpacity: 1,
+    shadowOffset: { width: 1, height: 1 },
+    shadowOpacity: 0.5,
     shadowRadius: 1
   },
   backgroundImage : {
