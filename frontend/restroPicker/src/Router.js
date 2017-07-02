@@ -39,6 +39,7 @@ class RouterComponent extends React.Component {
 
         <Scene key="rank">
           <Scene
+              sceneStyle={styles.rankingStyle}
               title="Ranking Time!"
               rightTitle="Confirm"
               onRight={() => Actions.rankingPage()}

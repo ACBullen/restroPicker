@@ -39,7 +39,7 @@ class RankingPage extends Component {
   render() {
     const {user_id, restos, order} = this.props;
     return (
-      <Image    source={require('./resultbackground.png')} style={styles.backgroundImage}>
+      <Image    source={require('../barn-wood-background.png')} style={styles.backgroundImage}>
 
         <View style={styles.viewStyle}>
           {this.formatRankings().map(obj =>
@@ -68,6 +68,7 @@ const styles = {
     color: 'white',
     fontSize: 23,
     fontWeight: "500",
+    backgroundColor: 'rgba(0,0,0,0)',
     shadowColor: 'black',
     shadowOffset: { width: 1.5, height: 1.5 },
     shadowOpacity: 1,
