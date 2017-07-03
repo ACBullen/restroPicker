@@ -55,21 +55,28 @@ class RestoList extends Component {
     const code = "Group Code: " + this.props.group.group_code;
     this.props.receiveOrder(this.createOrder(this.state.data));
     return (
-      <View style = {styles.container}>
-        <Header headerText={code}></Header>
-        <Text style={{color: 'white', marginBottom: 10}}>Powered by
+      <Image    source={require('../barn-wood-background.png')} style={styles.backgroundImage}>
+        <View style = {styles.container}>
+          <Header headerText={code}></Header>
 
-          <Image style={{width: 50, height: 32, marginTop: 10}} source={require('./Yelp_trademark_RGB.png')}/>
+          <Text style={{color: 'white', marginBottom: 5, marginTop: 5}}>
+            Press and Hold to sort your restaurants!
+          </Text>
 
-        </Text>
-        <SortableList
-          style={styles.list}
-          contentContainerStyle={styles.contentContainer}
-          data={this.state.data}
-          renderRow={this.renderRow}
-          onChangeOrder={nextOrder => this.props.receiveOrder(nextOrder)}/>
-      </View>
-    );
+          <SortableList
+            style={styles.list}
+            contentContainerStyle={styles.contentContainer}
+            data={this.state.data}
+            renderRow={this.renderRow}
+            onChangeOrder={nextOrder => this.props.receiveOrder(nextOrder)}/>
+          <Text style={styles.footer}>Powered by
+
+            <Image style={{width: 50, height: 32, marginTop: 10}} source={require('./Yelp_trademark_RGB.png')}/>
+
+          </Text>
+        </View>
+      </Image>
+      );
   }
 }
 
@@ -78,7 +85,13 @@ const styles = {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#1879fd'
+    // backgroundColor: '#1879fd'
+  },
+  backgroundImage : {
+    flex: 1,
+    // opacity: 0.6,
+    alignSelf: 'stretch',
+    width: null
   },
   list: {
     flex: 1,
@@ -88,11 +101,14 @@ const styles = {
     paddingVertical: 20,
     color: '#999999',
   },
-
   contentContainer: {
     width: window.width,
     paddingHorizontal: 30,
-      }
+  },
+  footer: {
+    color: 'white',
+    marginBottom: 5,
+    backgroundColor: 'rgba(0,0,0,0)'}
   };
 
 export default RestoList;

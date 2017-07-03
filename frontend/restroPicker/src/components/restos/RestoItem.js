@@ -84,7 +84,8 @@ class RestoItem extends Component {
               styles.row,
               this._style,
             ]}>
-          <TouchableHighlight underlayColor={'#1259ba'} onPress={()=> Linking.openURL(data.yelp_url)}>
+
+          <TouchableHighlight underlayColor={'#fcc05f'} onPress={()=> Linking.openURL(data.yelp_url)}>
             <Image source={{uri: data.image_url}} style={styles.image}/>
           </TouchableHighlight>
 
@@ -104,7 +105,7 @@ const styles = {
   row: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: 'rgba(0,0,0,0.1)',
+    backgroundColor: 'rgba(149,103,67,0.8)',
     padding: 16,
     height: 80,
     flex: 1,
@@ -117,24 +118,29 @@ const styles = {
     shadowOffset: {height: 2, width: 2},
     shadowRadius: 2
   },
+
   image: {
     width: 65,
     height: 65,
-    marginRight: 15,
     borderRadius: 20,
   },
+
   column1: {
-    flexDirection: 'column'
+    flexDirection: 'column',
+    marginLeft: 15
   },
+
   column2: {
     paddingLeft: 20
   },
 
   titleText: {
-    fontSize: 20,
+    fontSize: 18,
     marginBottom: 10,
     color: 'white',
+    width: window.width - 200
   },
+
   categoryText: {
     fontSize: 10,
     color: 'white',

@@ -20,34 +20,73 @@ class Splash extends Component {
 
   render () {
     return (
-      <View>
-        <Card>
-          <CardSection>
-            <View style={{paddingLeft: 25, paddingRight: 25, paddingTop: 30, paddingBottom: 30 }}>
-              <Text style={{fontSize: 50, fontFamily: 'Arial', color: 'white', fontWeight: '800' }}>RestoPick</Text>
-            </View>
-          </CardSection>
-          <CardSection>
-            <Button onPress={ () => {Actions.newGroupForm();}}>
-              New Group
-            </Button>
-          </CardSection>
-          <CardSection>
-            <Button onPress={ () => {Actions.joinGroupForm();}}>
-              Join Group
-            </Button>
-          </CardSection>
-          <CardSection>
-            <View style={{paddingLeft: 25, paddingRight: 25, paddingTop: 30, paddingBottom: 30 }}>
-              <Text style={{fontSize: 20, fontFamily: 'Arial', color: '#fcc05f', fontWeight: '800' }}>Choose a place to eat with minimum discord</Text>
-            </View>
-          </CardSection>
-        </Card>
-      </View>
+      <Image source={require('./background.png')} style={styles.backgroundImage}>
+        <View>
+          <Card>
+            <CardSection>
+              <View style={styles.viewStyle}>
+                <Text style={styles.titleStyle}>RestoPick</Text>
+              </View>
+            </CardSection>
+            <CardSection>
+              <Button onPress={ () => {Actions.newGroupForm();}}>
+                New Group
+              </Button>
+            </CardSection>
+            <CardSection>
+              <Button onPress={ () => {Actions.joinGroupForm();}}>
+                Join Group
+              </Button>
+            </CardSection>
+            <CardSection>
+              <View style={styles.viewStyle}>
+                <Text style={styles.textStyle}>Choose a place to eat with minimum discord</Text>
+              </View>
+            </CardSection>
+          </Card>
+        </View>
+      </Image>
     );
   }
 }
 
+const styles = {
+  titleStyle: {
+    fontSize: 60,
+    fontFamily: 'Arial',
+    color: 'white',
+    fontWeight: '800',
+    backgroundColor: 'rgba(0,0,0,0)',
+    shadowColor: 'black',
+    shadowOffset: { width: 1, height: 2 },
+    shadowOpacity: 0.5,
+    shadowRadius: 1,
+
+  },
+  backgroundImage : {
+    flex: 1,
+    // opacity: 0.6,
+    alignSelf: 'stretch',
+    width: null
+  },
+  viewStyle: {
+    paddingLeft: 25,
+    paddingRight: 25,
+    paddingTop: 30,
+    paddingBottom: 30
+  },
+  textStyle: {
+    fontSize: 20,
+    fontFamily: 'Arial',
+    color: 'white',
+    fontWeight: '800',
+    backgroundColor: 'rgba(0,0,0,0)',
+    shadowColor: 'black',
+    shadowOffset: { width: 1, height: 1 },
+    shadowOpacity: .9,
+    shadowRadius: 1,
+  }
+};
 
 const mapDispatchToProps = dispatch => ({
   receiveLocation: data => dispatch(receiveLocation(data)),

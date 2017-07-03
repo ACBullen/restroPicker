@@ -14,9 +14,10 @@ import { clearGroup } from './actions/group_actions';
 class RouterComponent extends React.Component {
   render(){
     return (
-      <Router sceneStyle={{ paddingTop: 65, backgroundColor: '#1879fd'}} navigationBarStyle={styles.navBar} titleStyle={styles.navTitle}>
+      <Router sceneStyle={styles.sceneStyle} navigationBarStyle={styles.navBar} titleStyle={styles.navTitle}>
         <Scene key="entry" initial>
           <Scene
+            sceneStyle={styles.splashStyle}
             key="splash"
             component={Splash}
             title="RestoPick"
@@ -38,6 +39,7 @@ class RouterComponent extends React.Component {
 
         <Scene key="rank">
           <Scene
+              sceneStyle={styles.rankingStyle}
               title="Ranking Time!"
               rightTitle="Confirm"
               onRight={() => Actions.rankingPage()}
@@ -45,6 +47,7 @@ class RouterComponent extends React.Component {
               component={RestoListContainer}
               />
           <Scene
+              sceneStyle={styles.rankingStyle}
               title="Confirm Rankings"
               key="rankingPage"
               component={RankingPageContainer}
@@ -83,16 +86,31 @@ class RouterComponent extends React.Component {
 
 
 const styles = {
+  sceneStyle: {
+    paddingTop: 65,
+    backgroundColor: '#1879fd'
+  },
+  splashStyle: {
+    paddingTop: 0
+  },
+
+  rankingStyle: {
+    paddingTop: 60,
+    backgroundColor: 'rgba(0,0,0,0)'
+  },
+
   navBar: {
     // flex: 1,
     // flexDirection: 'row',
     // alignItems: 'center',
     // justifyContent: 'center',
+    // backgroundColor: 'rgba(0,0,0,0)'
     // backgroundColor: '#1879fd', // changing navbar color
   },
   navTitle: {
     // color: 'white',
     fontWeight: '600',
+    backgroundColor: 'rgba(0,0,0,0)'
   },
   // routerScene: {
   //   paddingTop: Navigator.NavigationBar.Styles.General.NavBarHeight, // some navbar padding to avoid content overlap
