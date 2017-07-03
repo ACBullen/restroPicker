@@ -25,7 +25,7 @@ const styles = {
     // shadowOpacity: 0.2,
     borderBottomWidth: 2.0,
     // borderColor: '#ffc654',
-    borderColor: 'yellow',
+    borderColor: 'white',
     elevation: 2,
     position: 'relative'
 
