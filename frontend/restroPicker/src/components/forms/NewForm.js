@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Modal, Text, TouchableHighlight, View } from 'react-native';
+import { Modal, Text, TouchableHighlight, View, Image } from 'react-native';
 import { Button, Card, CardSection, Header, Input, Spinner } from '../common';
 import axios from 'axios';
 import { values } from 'lodash';
@@ -79,10 +79,9 @@ class NewForm extends Component {
 
   render () {
     return (
-          <View style={{marginTop: 130}}>
-            <View>
+      <Image source={require('./place_setting.png')} style={styles.backgroundImage}>
+        <View style={styles.containerStyle}>
               <Card>
-
                 <CardSection>
                   <Input
                     placeholder="What's your name?"
@@ -91,18 +90,17 @@ class NewForm extends Component {
                     onChangeText={text => this.setState({ username: text })}
                   />
                 </CardSection>
-
                 <Text style={styles.errorTextStyle}>
                 </Text>
-
-                <CardSection>
-                  {this.renderCreateNewGroupButton()}
-                </CardSection>
-
               </Card>
+        </View>
 
-            </View>
-          </View>
+        <View style={{padding: 40}}>
+          <CardSection>
+            {this.renderCreateNewGroupButton()}
+          </CardSection>
+        </View>
+      </Image>
     );
   }
 }
@@ -114,6 +112,19 @@ const styles = {
     color: '#b21e1e',
     fontWeight: '400',
   },
+  backgroundImage: {
+    flex: 1,
+    // opacity: 0.1,
+    alignSelf: 'stretch',
+    width: null
+  },
+  containerStyle: {
+    marginTop: 180,
+    marginLeft: 40,
+    paddingBottom: 35,
+    paddingTop: 35,
+    backgroundColor: 'rgba(249, 248, 247, 0.1)',
+  }
 };
 
 export default NewForm;

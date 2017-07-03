@@ -90,7 +90,7 @@ class RouterComponent extends React.Component {
 const styles = {
   sceneStyle: {
     paddingTop: 65,
-    backgroundColor: '#1879fd'
+    // backgroundColor: '#1879fd'
   },
   splashStyle: {
     paddingTop: 0

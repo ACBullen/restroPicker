@@ -21,7 +21,7 @@ class Splash extends Component {
   render () {
     return (
       <Image source={require('./background.png')} style={styles.backgroundImage}>
-        <View style={{marginTop: 100, marginLeft: 30, marginRight: 30}}>
+        <View style={{marginTop: 100, marginLeft: 30, marginRight: 30, backgroundColor: 'rgba(30, 30, 30, 0.7)'}}>
           <Card>
             <CardSection>
               <View style={styles.viewStyle}>

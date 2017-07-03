@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Modal, Text, TouchableHighlight, View } from 'react-native';
+import { Modal, Text, TouchableHighlight, View, Image } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { Button, Card, CardSection, Header, Input, Spinner } from '../common';
 
@@ -43,8 +43,8 @@ class JoinForm extends Component {
 
   render () {
     return (
-         <View style={{marginTop: 100}}>
-          <View>
+      <Image source={require('./place_setting.png')} style={styles.backgroundImage}>
+         <View style={styles.containerStyle}>
             <Card>
               <CardSection>
                 <Input
@@ -66,14 +66,14 @@ class JoinForm extends Component {
               <Text style={styles.errorTextStyle}>
                 {this.props.errors}
               </Text>
-
-              <CardSection>
-                {this.renderJoinAGroupButton()}
-              </CardSection>
             </Card>
-
           </View>
+          <View style={{padding: 40}}>
+            <CardSection>
+              {this.renderJoinAGroupButton()}
+            </CardSection>
          </View>
+      </Image>
     );
   }
 }
@@ -84,6 +84,17 @@ const styles = {
     alignSelf: 'center',
     color: '#b21e1e',
     fontWeight: '400',
+  },
+  backgroundImage: {
+    flex: 1,
+    // opacity: 0.1,
+    alignSelf: 'stretch',
+    width: null
+  },
+  containerStyle: {
+    marginTop: 180,
+    marginLeft: 40,
+    backgroundColor: 'rgba(249, 248, 247, 0.1)',
   }
 };
 
