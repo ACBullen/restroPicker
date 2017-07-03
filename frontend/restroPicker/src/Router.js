@@ -11,6 +11,8 @@ import WaitRoomContainer from './components/waitroom/WaitRoomContainer';
 import ResultContainer from './components/result/ResultContainer';
 import { clearGroup } from './actions/group_actions';
 
+console.disableYellowBox = true;
+
 class RouterComponent extends React.Component {
   render(){
     return (

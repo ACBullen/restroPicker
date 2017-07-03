@@ -21,7 +21,7 @@ class Splash extends Component {
   render () {
     return (
       <Image source={require('./background.png')} style={styles.backgroundImage}>
-        <View>
+        <View style={{marginTop: 100, marginLeft: 30, marginRight: 30}}>
           <Card>
             <CardSection>
               <View style={styles.viewStyle}>
@@ -52,7 +52,7 @@ class Splash extends Component {
 
 const styles = {
   titleStyle: {
-    fontSize: 60,
+    fontSize: 54,
     fontFamily: 'Arial',
     color: 'white',
     fontWeight: '800',
@@ -61,19 +61,18 @@ const styles = {
     shadowOffset: { width: 1, height: 2 },
     shadowOpacity: 0.5,
     shadowRadius: 1,
-
   },
   backgroundImage : {
     flex: 1,
-    // opacity: 0.6,
+    // opacity: 0.1,
     alignSelf: 'stretch',
     width: null
   },
   viewStyle: {
-    paddingLeft: 25,
-    paddingRight: 25,
-    paddingTop: 30,
-    paddingBottom: 30
+    paddingLeft: 15,
+    paddingRight: 15,
+    paddingTop: 20,
+    paddingBottom: 20,
   },
   textStyle: {
     fontSize: 20,
