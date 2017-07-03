@@ -73,7 +73,7 @@ class Result extends Component {
         </TouchableHighlight>
 
         <Card>
-          <TouchableHighlight underlayColor={'#1259ba'} onPress={()=> Linking.openURL(restos[second].yelp_url)}>
+          <TouchableHighlight underlayColor={'rgba(149,103,67,1)'} onPress={()=> Linking.openURL(restos[second].yelp_url)}>
             <Text style={styles.resultTextStyle}>
               Plan B: {restos[second].name}
             </Text>
@@ -81,7 +81,7 @@ class Result extends Component {
         </Card>
 
         <Card>
-          <TouchableHighlight underlayColor={'#1259ba'} onPress={()=> Linking.openURL(restos[third].yelp_url)}>
+          <TouchableHighlight underlayColor={'rgba(149,103,67,1)'} onPress={()=> Linking.openURL(restos[third].yelp_url)}>
             <Text style={styles.resultTextStyle}>
               Plan C: {restos[third].name}
             </Text>
