@@ -43,10 +43,11 @@ class Result extends Component {
     const third = result[2];
 
     return (
+      <Image source={require('../barn-wood-background.png')} style={styles.backgroundImage}>
       <View>
         <Header headerText={code}></Header>
         <Card>
-          <Text style={{color: 'white', marginBottom: 10, alignSelf: 'center'}}>Powered by
+          <Text style={{color: 'white', marginBottom: 10, alignSelf: 'center', backgroundColor: 'rgba(0,0,0,0)'}}>Powered by
 
             <Image style={{width: 50, height: 32, marginTop: 10}} source={require('../restos/Yelp_trademark_RGB.png')}/>
 
@@ -87,38 +88,49 @@ class Result extends Component {
           </TouchableHighlight>
         </Card>
       </View>
+      </Image>
     );
   }
 }
 
 const styles = {
+  backgroundImage : {
+    flex: 1,
+    // opacity: 0.6,
+    alignSelf: 'stretch',
+    width: null
+  },
   congratsTextStyle: {
     fontSize: 30,
     alignSelf: 'center',
     color: 'white',
     fontWeight: '800',
+    backgroundColor: 'rgba(0,0,0,0)',
   },
   youareTextStyle: {
     fontSize: 20,
     alignSelf: 'center',
     color: 'white',
     fontWeight: '400',
+    backgroundColor: 'rgba(0,0,0,0)',
   },
   winnerTextStyle: {
     fontSize: 20,
     // alignItems: 'center',
     color: 'black',
     fontWeight: '800',
+    backgroundColor: 'rgba(0,0,0,0)',
   },
   resultTextStyle: {
     fontSize: 20,
     alignSelf: 'center',
     color: 'white',
+    backgroundColor: 'rgba(0,0,0,0)',
   },
   row: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: 'rgba(0,0,0,0.1)',
+    backgroundColor: 'rgba(149,103,67,0.8)',
     padding: 50,
     height: 20,
     flex: 1,
@@ -148,10 +160,12 @@ const styles = {
     fontSize: 20,
     marginBottom: 10,
     color: 'white',
+    backgroundColor: 'rgba(0,0,0,0)',
   },
   categoryText: {
     fontSize: 10,
     color: 'white',
+    backgroundColor: 'rgba(0,0,0,0)',
   }
 };
 
