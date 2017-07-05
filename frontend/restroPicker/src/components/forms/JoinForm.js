@@ -92,7 +92,7 @@ const styles = {
     width: null
   },
   containerStyle: {
-    marginTop: 180,
+    marginTop: 200,
     marginLeft: 40,
     backgroundColor: 'rgba(249, 248, 247, 0.1)',
   }

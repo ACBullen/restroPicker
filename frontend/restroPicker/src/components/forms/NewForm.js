@@ -119,7 +119,7 @@ const styles = {
     width: null
   },
   containerStyle: {
-    marginTop: 180,
+    marginTop: 200,
     marginLeft: 40,
     paddingBottom: 35,
     paddingTop: 35,

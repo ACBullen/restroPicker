@@ -27,12 +27,14 @@ class RouterComponent extends React.Component {
             />
           <Scene
             key="newGroupForm"
+            sceneStyle={styles.splashStyle}
             component={NewFormContainer}
             title="Create a Group"
             hideNavBar={false}
             />
           <Scene
             key="joinGroupForm"
+            sceneStyle={styles.splashStyle}
             component={JoinFormContainer}
             title="Join a Group"
             hideNavBar={false}
@@ -58,6 +60,7 @@ class RouterComponent extends React.Component {
 
         <Scene key="room">
           <Scene
+            sceneStyle={styles.rankingStyle}
             onRight={() =>{this.props.clearGroup();
               Actions.entry({type: "reset"});
             }}
@@ -70,6 +73,7 @@ class RouterComponent extends React.Component {
 
         <Scene key="end">
           <Scene
+            sceneStyle={styles.rankingStyle}
             onRight={() => {this.props.clearGroup();
               Actions.entry({type: "reset"});}}
             rightTitle="Leave"
