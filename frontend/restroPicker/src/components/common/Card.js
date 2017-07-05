@@ -22,7 +22,9 @@ const styles = {
     elevation: 1,
     marginLeft: 5,
     marginRight: 5,
-    marginTop: 10
+    marginTop: 10,
+
+    // backgroundColor: 'rgba(30, 30, 30, 0.7)',
   }
 };
 

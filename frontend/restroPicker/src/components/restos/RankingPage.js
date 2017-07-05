@@ -39,15 +39,17 @@ class RankingPage extends Component {
   render() {
     const {user_id, restos, order} = this.props;
     return (
-      <Image    source={require('../barn-wood-background.png')} style={styles.backgroundImage}>
+      <Image source={require('./ranking_bg.png')} style={styles.backgroundImage}>
 
         <View style={styles.viewStyle}>
           {this.formatRankings().map(obj =>
             <CardSection>
               <Text style={styles.textStyle}>
-              {obj.ranking}: {restos[obj.rest_id].name}
+              {obj.ranking}.   {restos[obj.rest_id].name}
               </Text>
             </CardSection>)}
+        </View>
+        <View style={{padding: 40}}>
             <CardSection>
               <Button onPress={ () => {this.submitNewRankings();}}>
                 Submit
@@ -61,18 +63,19 @@ class RankingPage extends Component {
 
 const styles = {
   viewStyle : {
-    paddingTop: 20
+    paddingTop: 100,
   },
   textStyle : {
     paddingLeft: 50,
-    color: 'white',
-    fontSize: 23,
+    paddingRight: 50,
+    color: 'black',
+    fontSize: 20,
     fontWeight: "500",
     backgroundColor: 'rgba(0,0,0,0)',
     shadowColor: 'black',
     shadowOffset: { width: 1, height: 1 },
     shadowOpacity: 0.5,
-    shadowRadius: 1
+    shadowRadius: 1,
   },
   backgroundImage : {
     flex: 1,

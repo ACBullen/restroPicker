@@ -111,30 +111,41 @@ class WaitRoom extends Component {
   render() {
     const code = "Group Code: " + this.state.group.group_code;
     return (
-      <View>
-        <Header headerText={code}></Header>
-        <ListView
-          style={styles.listStyle}
-          dataSource={this.state.dataSource}
-          renderRow={this.renderRow.bind(this)}
-        />
-        {this.renderbutton()}
-      </View>
+      <Image source={require('./blackboard.jpg')} style={styles.backgroundImage}>
+      <Header headerText={code}></Header>
+        <View style={{marginTop: 90}}>
+          <ListView
+            style={styles.listStyle}
+            dataSource={this.state.dataSource}
+            renderRow={this.renderRow.bind(this)}
+          />
+        </View>
+        <View style={{paddingLeft: 60, paddingRight: 60}}>
+          {this.renderbutton()}
+        </View>
+      </Image>
+
     );
   }
 }
 
 const styles = {
+  backgroundImage: {
+    flex: 1,
+    // opacity: 0.1,
+    alignSelf: 'stretch',
+    width: null
+  },
   nameStyle: {
     fontSize: 18,
-    paddingLeft: 20,
+    paddingLeft: 10,
     color: 'white',
   },
   rowStyle: {
-    marginLeft: 50,
-    marginRight: 50,
+    marginLeft: 90,
+    marginRight: 130,
     padding: 3,
-    // backgroundColor: 'rgba(245, 245, 245, 0.2)',
+    backgroundColor: 'rgba(245, 245, 245, 0.0)',
   },
   listStyle: {
     paddingTop: 40,
@@ -142,6 +153,7 @@ const styles = {
     // borderBottomWidth: 0.75,
     // borderColor: 'white',
   },
+
 };
 
 export default WaitRoom;
