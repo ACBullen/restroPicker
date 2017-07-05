@@ -49,7 +49,7 @@ class RankingPage extends Component {
               </Text>
             </CardSection>)}
         </View>
-        <View style={{padding: 30}}>
+        <View style={styles.buttonStyle}>
             <CardSection>
               <Button onPress={ () => {this.submitNewRankings();}}>
                 Submit
@@ -62,6 +62,14 @@ class RankingPage extends Component {
 }
 
 const styles = {
+  buttonStyle: {
+    padding: 30,
+    position: 'absolute',
+    top: 470,
+    left: 0,
+    right: 0,
+    bottom: 0,
+  },
   viewStyle : {
     paddingTop: 100,
   },
