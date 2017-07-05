@@ -4,6 +4,7 @@ class UserUpdateJob < ApplicationJob
   def perform(user,user_id)
     # Do something later, ie render a user partial back to the subscribers
     # so they know where in the process everyone else is.
+    p user, user_id
     user = Api.GroupsController.render(
       partial: 'api/users/user',
       locals:  { user: user }

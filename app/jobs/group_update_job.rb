@@ -4,6 +4,7 @@ class GroupUpdateJob < ApplicationJob
   def perform(group, group_id)
     # Do something later, ie render back a partial for the group info and
     # broadcast to the related group
+    p group, group_id
     group = Api.GroupsController.render(
       partial: 'api/groups/group',
       locals:  { group: group }
