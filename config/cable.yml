@@ -5,5 +5,4 @@ test:
   adapter: async
 
 production:
-  adapter: redis
-  url: redis://resto-pick.herokuapp.com/1
+  adapter: async
