@@ -67,6 +67,8 @@ class Result extends Component {
               <Text>{this.renderStars(restos[first].rating)}</Text>
               <Text style={styles.categoryText}>
                 {this.renderCategories(restos[first].categories)}
+                {"\n"}
+                {restos[first].address}
               </Text>
             </View>
           </View>
@@ -75,7 +77,8 @@ class Result extends Component {
         <Card>
           <TouchableHighlight underlayColor={'rgba(149,103,67,1)'} onPress={()=> Linking.openURL(restos[second].yelp_url)}>
             <Text style={styles.resultTextStyle}>
-              Plan B: {restos[second].name}
+              Plan B: {restos[second].name} {"\n"}
+              <Text style={styles.categoryText}>{restos[second].address} </Text>
             </Text>
           </TouchableHighlight>
         </Card>
@@ -83,7 +86,8 @@ class Result extends Component {
         <Card>
           <TouchableHighlight underlayColor={'rgba(149,103,67,1)'} onPress={()=> Linking.openURL(restos[third].yelp_url)}>
             <Text style={styles.resultTextStyle}>
-              Plan C: {restos[third].name}
+              Plan C: {restos[third].name} {"\n"}
+              <Text style={styles.categoryText}>{restos[third].address}</Text>
             </Text>
           </TouchableHighlight>
         </Card>
@@ -163,7 +167,7 @@ const styles = {
     backgroundColor: 'rgba(0,0,0,0)',
   },
   categoryText: {
-    fontSize: 10,
+    fontSize: 12,
     color: 'white',
     backgroundColor: 'rgba(0,0,0,0)',
   }
