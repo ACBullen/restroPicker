@@ -1,7 +1,7 @@
 class UserUpdateJob < ApplicationJob
   queue_as :default
 
-  def perform(user)
+  def perform(user,user_id)
     # Do something later, ie render a user partial back to the subscribers
     # so they know where in the process everyone else is.
     user = Api.GroupsController.render(

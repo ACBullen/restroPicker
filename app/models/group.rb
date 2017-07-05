@@ -15,7 +15,7 @@ class Group < ApplicationRecord
   before_validation :generate_group_code
 
   #after committing, broadcast to related room:
-  after_commit { GroupUpdateJob.perform_later(self) }
+  after_commit { GroupUpdateJob.perform_later(self, self.id) }
   after_create { GroupCleanupJob.set(wait: 1.day).perform_later(self) }
 
 
