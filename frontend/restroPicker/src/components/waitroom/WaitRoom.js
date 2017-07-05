@@ -54,6 +54,7 @@ class WaitRoom extends Component {
 
   componentWillUnmount() {
     global.clearInterval(this.endcheck);
+    this.ws.close();
   }
 
 
