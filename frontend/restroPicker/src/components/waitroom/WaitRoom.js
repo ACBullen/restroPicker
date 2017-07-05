@@ -21,8 +21,9 @@ class WaitRoom extends Component {
     this.ws = new WebSocket("ws://resto-pick.herokuapp.com/cable")
     this.ws.onerror = (m) => console.log(m);
     this.ws.onmessage = (m) => JSON.parse(m.data).type !== "ping" ? console.log(m.data) : console.log("ping");
-    this.ws.onopen = () => {this.ws.send(JSON.stringify({"command":"subscribe","identifier":"{\"channel\":\"GroupChannel\"}"}))};
+    this.ws.onopen = () => {this.ws.send(JSON.stringify({"command":"subscribe","identifier":`{\"channel\":\"GroupChannel\", \"channel_name\":\"1\"}`}))};
   }
+  //${this.props.group.id}
 
   fetchData() {
     const data = ({
