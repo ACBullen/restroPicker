@@ -20,7 +20,7 @@ class WaitRoom extends Component {
     // this.endcheck = global.setInterval(this.fetchData.bind(this), 1000);
     this.ws = new WebSocket("ws://resto-pick.herokuapp.com/cable")
     this.ws.onerror = (m) => console.log(m);
-    this.ws.onmessage = (m) => JSON.parse(m.data).type !== "ping" ? console.log(m.data) : "";
+    this.ws.onmessage = (m) => JSON.parse(m.data).type !== "ping" ? console.log(m.data) : console.log("ping");
     this.ws.onopen = () => {this.ws.send(JSON.stringify({"command":"subscribe","identifier":"{\"channel\":\"GroupChannel\"}"}))};
   }
 
