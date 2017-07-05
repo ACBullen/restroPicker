@@ -10,7 +10,7 @@ class GroupUpdateJob < ApplicationJob
     )
 
     ActionCable.server.broadcast(
-      "channel_#{group.id}",
+      "channel_1",
       group: JSON.parse(group)
     )
   end
