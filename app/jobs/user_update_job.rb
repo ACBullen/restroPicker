@@ -1,18 +1,17 @@
 class UserUpdateJob < ApplicationJob
   queue_as :default
 
-  def perform(user,user_id)
+  def perform(user,group_id)
     # Do something later, ie render a user partial back to the subscribers
     # so they know where in the process everyone else is.
-    p user, user_id
-    user = Api.GroupsController.render(
+    user_info = Api.GroupsController.render(
       partial: 'api/users/user',
       locals:  { user: user }
     )
 
     ActionCable.server.broadcast(
-      "channel_1",
-      user: JSON.parse(user)
+      "channel_#{group_id}",
+      user: JSON.parse(user_info)
     )
   end
 end
