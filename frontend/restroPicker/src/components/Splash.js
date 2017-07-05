@@ -64,7 +64,7 @@ const styles = {
   },
   backgroundImage : {
     flex: 1,
-    // opacity: 0.1,
+    opacity: 0.9,
     alignSelf: 'stretch',
     width: null
   },

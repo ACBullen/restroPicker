@@ -27,12 +27,14 @@ class RouterComponent extends React.Component {
             />
           <Scene
             key="newGroupForm"
+            sceneStyle={styles.splashStyle}
             component={NewFormContainer}
             title="Create a Group"
             hideNavBar={false}
             />
           <Scene
             key="joinGroupForm"
+            sceneStyle={styles.splashStyle}
             component={JoinFormContainer}
             title="Join a Group"
             hideNavBar={false}
