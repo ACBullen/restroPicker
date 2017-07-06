@@ -80,7 +80,8 @@ a:focus {
 }
 img {
     max-width: 100%;
-    height: auto
+    height: auto;
+    margin: 20px 0px;
 }
 .fix {
     overflow: hidden
@@ -443,6 +444,7 @@ a.button:hover span {
 }
 p.about-pb {
     padding-bottom: 12px;
+    font-size: 20px;
 }
 .about-bottom-left > p {
     padding-right: 36px;
