@@ -11,8 +11,6 @@ class Api::ResultsController < ApplicationController
       @restaurants = @group.restaurants.includes(:rankings)
       result = best_choice_algo(@restaurants)
       render json: result
-      # render json: ["Hurr yo results!"]
-
     end
   end
 
